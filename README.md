@@ -1,5 +1,5 @@
-# first-circleci-franco vaccarezza
+# Ajedrez Orientado a Objetos
 
-first-circleci-franco vaccarezza created by GitHub Classroom
+franco vaccarezza 
 
 # CircleCI
