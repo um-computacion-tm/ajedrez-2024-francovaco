@@ -6,13 +6,10 @@ class Chess:
         self.__board__ = Board()
         self.__turn__ = "WHITE"
 
-    def move(
-        self,
-        from_row,
-        from_col,
-        to_row,
-        to_col,
-    ):
+    def get_board(self):
+        return self.__board__.get_board()
+
+    def move(self, from_row, from_col, to_row, to_col):
         # validate coords
         piece = self.__board__.get_piece(from_row, from_col)
         self.change_turn()
