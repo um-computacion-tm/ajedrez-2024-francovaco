@@ -29,12 +29,12 @@ Para correr el juego se requiere Python
 
 Clonar el [repositorio](https://github.com/um-computacion-tm/ajedrez-2024-francovaco.git) del juego 
 
-'''bash
+''' bash
 git clone https://github.com/um-computacion-tm/ajedrez-2024-francovaco.git
 '''
 
 Ejecutar el juego
 
-'''bash
+''' bash
 python cli.py
 '''
