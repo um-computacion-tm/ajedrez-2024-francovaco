@@ -8,11 +8,12 @@ class Chess:
 
     def get_board(self):
         return self.__board__.get_board()
-
+        
     def move(self, from_row, from_col, to_row, to_col):
-        # validate coords
+        #Validar coordenadas
         piece = self.__board__.get_piece(from_row, from_col)
-        self.change_turn()
+        self.change_turn()        
+   
     @property
     def turn(self):
         return self.__turn__
