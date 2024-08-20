@@ -1,4 +1,5 @@
 [run]
+source = cli
 omit =
     venv/*
     */test/*
