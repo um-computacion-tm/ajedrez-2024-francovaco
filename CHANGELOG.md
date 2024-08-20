@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.0.3] - 20-08-2024
+
+### Agregado:
+-Creacion de los test de la interfaz de usuario.
+
 ## [0.0.2] - 15-08-2024
 
 ### Agregado:
