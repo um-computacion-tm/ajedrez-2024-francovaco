@@ -15,8 +15,11 @@ jobs:
           name: Install dependencies
           command: pip install -r requirements.txt
       - run:
+          name: Set PYTHONPATH
+          command: export PYTHONPATH=$PYTHONPATH:/home/circleci/project/ajedrez/game
+      - run:
           name: Run tests
-          command: coverage run -m unittest && coverage xml && coverage report -m
+          command: cd /home/circleci/project coverage run -m unittest && coverage xml && coverage report -m
       - run:
           name: Upload CodeClimate coverage report
           command: |
