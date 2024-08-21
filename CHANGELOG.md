@@ -4,6 +4,7 @@
 
 ### Agregado:
 -Creacion de los test de la interfaz de usuario.
+-Salir de juego con el string SALIR
 
 ## [0.0.2] - 15-08-2024
 

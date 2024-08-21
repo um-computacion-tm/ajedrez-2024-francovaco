@@ -1,10 +1,9 @@
-from game.chess import Chess
+from chess import Chess
 
 def main():
     chess = Chess()
-    while True:
+    while True: 
         play(chess)
-
 
 
 def show_board_with_icons(board):
@@ -38,9 +37,7 @@ def show_board_with_icons(board):
         print(' '.join(piece_icons[piece] for piece in row))
 
 
-
 def play(chess):
-
     '''
     La función play() se encarga de gestionar una jugada en una partida de ajedrez
     Funcionamiento
@@ -66,38 +63,52 @@ def play(chess):
     chess: La función recibe un único parámetro llamado chess, que es un objeto que represente el estado actual de la partida de ajedrez. 
     '''
 
-    try:
+    try: 
 
         # Mostrar tablero y turno actual y pedir coordenadas
         show_board_with_icons(chess.get_board())
+        print("Ingrese las coordenadas de la pieza que desea mover y su destino.")
+        print("Ingrese SALIR para terminar el juego.")
         print("Turno: ", chess.turn)
         from_row = input("Desde fila: ")
+        if from_row.upper() == "SALIR":
+            print("Juego terminado.")
+            exit()
         from_col = input("Desde columna: ")
+        if from_col.upper() == "SALIR":
+            print("Juego terminado.")
+            exit()
         to_row = input("A fila: ")
+        if to_row.upper() == "SALIR":
+            print("Juego terminado.")
+            exit()
         to_col = input("A columna: ")
+        if to_col.upper() == "SALIR":
+            print("Juego terminado.")
+            exit()
 
-        # Validar que las entradas sean números
+        # Validar que las coordenadas sean números
         if not (from_row.isdigit() and from_col.isdigit() and to_row.isdigit() and to_col.isdigit()):
             raise ValueError("Debe ingresar valores numéricos entre 0 y 7.")
         
+        # Convertir las coordenadas a enteros
         from_row = int(from_row)
         from_col = int(from_col)
         to_row = int(to_row)
         to_col = int(to_col)
 
-        # Validar que las entradas estén en el rango permitido
-        if not (0 <= from_row <= 7 and 0 <= from_col <= 7 and 0 <= to_row <= 7 and 0 <= to_col <= 7):
+        # Validar que las coordenadas estén en el rango permitido
+        if not (0 <= from_row < 8 and 0 <= from_col < 8 and 0 <= to_row < 8 and 0 <= to_col < 8):
             raise ValueError("Los valores de fila y columna deben estar entre 0 y 7.")
         
-        # Mover la pieza
+        # Mover la pieza en el tablero
         chess.move(from_row, from_col, to_row, to_col)
 
-    #Errores
+    #Errores 
     except ValueError as ve:
         print("Error:", ve)
     except Exception as e:
         print("Error:", e)
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
