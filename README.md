@@ -23,12 +23,12 @@ Este proyecto es un juego de ajedrez implementado en Python utilizando un enfoqu
 El juego esta diseñado en Python orientado a objetos implementando algunas de las reglas del ajedrez. No cuenta con enroque, jaque, jaque mate y tablas.
 El juego se ejecuta en la consola con un tablero mostrado en texto con simbolos Unicode.
 El código esta diseñado para futuras mejoras como puede ser una interfaz gráfica, guradado de partidas para su continuación en otro momento y el agregado de las reglas faltantes.
-El juego finaliza cuando uno de los jugadores le come todas las piezas al otro, cuando los jugadores deseen finalizarlo ingresando la opcion SALIR o cuando alguno de los  jugadores se quede sin posibles movimientos.
+El juego finaliza cuando uno de los jugadores le come todas las piezas al otro o cuando los jugadores deseen finalizarlo ingresando la opcion SALIR 
 
 ## ¿Como se juega?
 
-El juego se juega como cualquier juego de ajedrez entre dos jugadores, inicia el juego con el turno de las fichas blancas y cada jugador va moviendo sus fichas y comiendo las del oponente en su turno. El jugador que se queda sin fichas pierde, o también pierde en el caso de que se quede sin posibles movimientos.
-Además en cualquier momento de la partida los jugadores pueden finalizar la partida ingresando la opción SALIR. 
+El juego se juega como cualquier juego de ajedrez entre dos jugadores, inicia el juego con el turno de las fichas blancas y cada jugador va moviendo sus fichas y comiendo las del oponente en su turno. El jugador que se queda sin fichas pierde.
+Además en cualquier momento de la partida los jugadores pueden finalizar el juego ingresando la opción SALIR. 
 
 ## Requisitos:
 
