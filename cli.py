@@ -62,7 +62,7 @@ def play(chess):
     Atributos
     chess: La función recibe un único parámetro llamado chess, que es un objeto que represente el estado actual de la partida de ajedrez. 
     '''
-
+    
     try: 
 
         # Mostrar tablero y turno actual y pedir coordenadas
@@ -105,9 +105,7 @@ def play(chess):
         chess.move(from_row, from_col, to_row, to_col)
 
     #Errores 
-    except ValueError as ve:
-        print("Error:", ve)
-    except Exception as e:
+    except ValueError as e:
         print("Error:", e)
 
 if __name__ == "__main__":
