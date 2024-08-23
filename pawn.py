@@ -1,6 +1,5 @@
 from piece import Piece
 
-
 class Pawn(Piece):
     
     def __str__(self):
@@ -20,5 +19,4 @@ class Pawn(Piece):
         if row != start_row:
             moves.append((row + direction, col - 1))
             moves.append((row + direction, col + 1))
-
         return moves

@@ -8,7 +8,6 @@ class TestCli(unittest.TestCase):
 
     @patch('sys.stdout', new_callable=StringIO)
     def test_show_board_with_icons(self, mock_stdout):
-
         '''
         La función test_show_board_with_icons es una prueba unitaria que verifica si el tablero de ajedrez se muestra correctamente con los iconos de las piezas.
         La función test_show_board_with_icons verifica que, cuando se llama a la función show_board_with_icons con un tablero de ajedrez como argumento, 
@@ -40,7 +39,6 @@ class TestCli(unittest.TestCase):
     @patch('builtins.input', side_effect=['SALIR'])
     @patch('builtins.print')
     def test_salir_from_row(self, mock_print, mock_input):
-
         '''
         La función test_salir es una prueba unitaria que verifica cómo se maneja la entrada "SALIR" en el tablero de ajedrez.
         La función test_salir verifica que, cuando se simula la entrada del usuario con el valor "SALIR" en lugar de la cooerdenada de la fila origen, 
@@ -54,7 +52,6 @@ class TestCli(unittest.TestCase):
     @patch('builtins.input', side_effect=['1', 'SALIR'])
     @patch('builtins.print')
     def test_salir_from_col(self, mock_print, mock_input):
-
         '''
         La función test_salir es una prueba unitaria que verifica cómo se maneja la entrada "SALIR" en el tablero de ajedrez.
         La función test_salir verifica que, cuando se simula la entrada del usuario con el valor "SALIR" en lugar de la cooerdenada de la columna origen,
@@ -68,7 +65,6 @@ class TestCli(unittest.TestCase):
     @patch('builtins.input', side_effect=['1', '1', 'SALIR'])
     @patch('builtins.print')
     def test_salir_to_row(self, mock_print, mock_input):
-
         '''
         La función test_salir es una prueba unitaria que verifica cómo se maneja la entrada "SALIR" en el tablero de ajedrez.
         La función test_salir verifica que, cuando se simula la entrada del usuario con el valor "SALIR" en lugar de la cooerdenada de la fila destino,
@@ -82,7 +78,6 @@ class TestCli(unittest.TestCase):
     @patch('builtins.input', side_effect=['1', '1', '2', 'SALIR'])
     @patch('builtins.print')
     def test_salir_to_col(self, mock_print, mock_input):
-
         '''
         La función test_salir es una prueba unitaria que verifica cómo se maneja la entrada "SALIR" en el tablero de ajedrez.
         La función test_salir verifica que, cuando se simula la entrada del usuario con el valor "SALIR" en lugar de la cooerdenada de la columna destino,
@@ -93,17 +88,14 @@ class TestCli(unittest.TestCase):
             play(chess)
         mock_print.assert_called_with("Juego terminado.")
 
-
     @patch('builtins.input', side_effect=['6', '0', '4', '0'])
     @patch('cli.show_board_with_icons')
     def test_movimiento_valido_peon(self, mock_show_board, mock_input):
-
         '''
         La función test_movimiento_valido es una prueba unitaria que verifica si un movimiento válido en el tablero de ajedrez se maneja correctamente.
         La función test_movimiento_valido verifica que, cuando se simula la entrada del usuario para mover una pieza de ajedrez desde la posición (fils, columna) 
         a la posición (fila, columna), el método move del objeto chess se llama con los parámetros correctos. Los parámetros mock_show_board y mock_input son 
         objetos simulados que reemplazan las funciones reales durante la prueba.
-
         '''
         chess = MagicMock()
         chess.get_board.return_value = [['.']*8 for _ in range(8)]
@@ -129,19 +121,15 @@ class TestCli(unittest.TestCase):
         play(chess)
         chess.move.assert_called_with(7, 1, 5, 2)
 
-
-
     @patch('builtins.input', side_effect=['a', '0', '1', '1'])
     @patch('cli.show_board_with_icons')
     def test_coordenadas_no_numericas_from_row(self, mock_show_board, mock_input):
-
         '''
         La función test_coordenadas_no_numericas es una prueba unitaria que verifica cómo se maneja una entrada no numérica inválida en el tablero de ajedrez.
         La función test_coordenadas_no_numericas verifica que, cuando se simula la entrada del usuario con un valor no numérico, 
         el programa maneja la entrada incorrecta adecuadamente sin intentar mover ninguna pieza y mostrando el error. Los parámetros mock_show_board y mock_input son 
         objetos simulados que reemplazan las funciones reales durante la prueba.
         '''
-
         chess = MagicMock()
         chess.get_board.return_value = [['.']*8 for _ in range(8)]
         chess.turn = 'white'
@@ -187,19 +175,15 @@ class TestCli(unittest.TestCase):
         sys.stdout = sys.__stdout__
         self.assertIn("Debe ingresar valores numéricos entre 0 y 7.", captured_output.getvalue())
 
-
-
     @patch('builtins.input', side_effect=['0', '0', '8', '1'])
     @patch('cli.show_board_with_icons')
     def test_coordenadas_fuera_de_rango_to_row(self, mock_show_board, mock_input):
-
         '''
         La función test_coordenadas_fuera_de_rango es una prueba unitaria que verifica cómo se maneja una entrada fuera del rango válido en el tablero de ajedrez.
         La función test_coordenadas_fuera_de_rango verifica que, cuando se simula la entrada del usuario con un valor fuera del rango permitido (0-7), 
         el programa maneja la entrada incorrecta adecuadamente sin intentar mover ninguna pieza y mostrando el error. Los parámetros mock_show_board y mock_input son 
         objetos simulados que reemplazan las funciones reales durante la prueba.
         '''
-
         chess = MagicMock()
         chess.get_board.return_value = [['.']*8 for _ in range(8)]
         chess.turn = 'white'

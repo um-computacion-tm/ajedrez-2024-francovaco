@@ -1,6 +1,5 @@
 from piece import Piece
 
-
 class Knight(Piece):
 
     #Letra que representa al caballo
@@ -13,13 +12,11 @@ class Knight(Piece):
         directions = [
             (2, 1), (2, -1), (-2, 1), (-2, -1),
             (1, 2), (1, -2), (-1, 2), (-1, -2)
-        ]
-        
+        ]  
         for direction in directions:
             new_row = from_row + direction[0]
             new_col = from_col + direction[1]
           
             if 0 <= new_row < 8 and 0 <= new_col < 8:
-                moves.append((new_row, new_col))
-                
+                moves.append((new_row, new_col))        
         return moves

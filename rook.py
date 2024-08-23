@@ -1,6 +1,5 @@
 from piece import Piece
 
-
 class Rook(Piece):
 
     def __str__(self):
@@ -12,16 +11,13 @@ class Rook(Piece):
         directions = [
             (-1, 0), (1, 0), (0, -1), (0, 1) 
         ]
-        
         for direction in directions:
             new_row, new_col = from_row, from_col
             while True:
                 new_row += direction[0]
-                new_col += direction[1]
-                
+                new_col += direction[1]   
                 if 0 <= new_row < 8 and 0 <= new_col < 8:
                     moves.append((new_row, new_col))
                 else:
-                    break
-                
+                    break     
         return moves
