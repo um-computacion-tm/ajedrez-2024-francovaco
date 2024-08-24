@@ -74,10 +74,15 @@ class Board:
 
     # Mover pieza
     def move_piece(self, from_row, from_col, to_row, to_col):
-        piece = self.get_piece(from_row, from_col)
+        
+        piece = self.__positions__[from_row][from_col]
+        if piece is None:
+            raise ValueError("No hay ninguna pieza en la posición de origen.")
+
+        target_piece = self.__positions__[to_row][to_col]
+        if target_piece is not None and target_piece.get_color == piece.get_color:
+            raise ValueError("No puedes capturar tus propias piezas.")
+
+        # Mover la pieza
         self.__positions__[to_row][to_col] = piece
         self.__positions__[from_row][from_col] = None
-
-    # Iterador
-    def iter(self):
-        return iter(self.__positions__)

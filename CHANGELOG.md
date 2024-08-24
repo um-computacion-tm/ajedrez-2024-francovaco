@@ -1,9 +1,14 @@
 # Changelog
 
+## [0.6] - 24-08-2024
+
+### Agregado:
+-Creación de la eliminacion de fichas enemigas cuando el movimiento lo permite.
+
 ## [0.5] - 23-08-2024
 
 ### Agregado:
--Creación del movimiento de las fichas en el tablero
+-Creación del movimiento de las fichas en el tablero.
 
 ## [0.4] - 20-08-2024
 
@@ -18,7 +23,7 @@
 
 ### Agregado:
 -Creación de los test de la interfaz de usuario.
--Salir de juego con el string SALIR
+-Salir de juego con el string SALIR.
 
 ## [0.2] - 15-08-2024
 
