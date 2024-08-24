@@ -13,5 +13,7 @@ class Piece:
     def get_color(self):
         '''
         La función retorna el valor del atributo privado __color__ de la pieza.
+        Funcionamiento:
+        Retorna el valor del atributo __color__
         '''
         return self.__color__
