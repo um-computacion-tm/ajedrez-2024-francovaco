@@ -40,8 +40,6 @@ checks:
     enabled: true
     config:
       threshold: #language-specific defaults. overrides affect all languages.
-  docstring:
-    enabled: false
 
 exclude_patterns:
 - "config/"
