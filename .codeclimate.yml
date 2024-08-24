@@ -49,7 +49,7 @@ exclude_patterns:
 - "venv"
 - "ajedrez/"
 - "**/tests/"
-- "**/test"
+- "**/test*"
 - "**/vendor/"
 - "**/*_test.go"
 - "**/*.d.ts"
