@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.7] - 25-08-2024
+
+### Agregado:
+-Creación test de chess
+
 ## [0.6] - 24-08-2024
 
 ### Agregado:
