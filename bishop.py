@@ -4,7 +4,7 @@ class Bishop(Piece):
 
     def __str__(self):
         '''
-        La funcion retorna la letra que representa al alfil en el tablero.
+        La función retorna la letra que representa al alfil en el tablero.
         Funcionamiento:
         Se verifica si el color del alfil es blanco.
         Si es blanco, retorna 'B'.
