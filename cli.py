@@ -1,9 +1,13 @@
-from chess import Chess
+from chess import Chess, GameOverException
 
 def main():
     chess = Chess()
     while True: 
-        play(chess)
+        try:
+            play(chess)
+        except GameOverException as e:
+            print(str(e))
+            exit()
 
 def show_board_with_icons(board):
     '''
@@ -15,7 +19,7 @@ def show_board_with_icons(board):
     2- Mostrar el Tablero:
     La función itera sobre cada fila del tablero (board), y para cada fila, convierte cada pieza en su icono correspondiente utilizando el diccionario piece_icons.
     Luego, imprime cada fila del tablero con los iconos de las piezas separados por espacios.
-    Parametros
+    Parámetros
     board: La función recibe un único parámetro llamado board, que es una lista de listas (matriz) donde cada sublista representa una fila del 
     tablero de ajedrez. Cada elemento de la sublista es un carácter que representa una pieza de ajedrez o una casilla vacía.
     '''
@@ -46,7 +50,7 @@ def play(chess):
     5- Validar Rango de Coordenadas:
     Verifica que todas las coordenadas estén en el rango permitido (0 a 7).
     Si alguna coordenada está fuera de este rango, lanza una excepción ValueError con el mensaje "Los valores de fila y columna deben estar entre 0 y 7."
-    Parametros
+    Parámetros
     chess: La función recibe un único parámetro llamado chess, que es un objeto que represente el estado actual de la partida de ajedrez. 
     '''
     try: 

@@ -4,12 +4,18 @@ from pawn import Pawn
 class TestPawn(unittest.TestCase):
 
     def test_str_method(self):
+        '''
+        La función test_str_method es una prueba unitaria que verifica que el método __str__ de la clase Pawn devuelva 'P' para una pieza blanca y 'p' para una pieza negra.
+        '''
         pawn_white = Pawn('WHITE')
         pawn_black = Pawn('BLACK')
         self.assertEqual(str(pawn_white), 'P')
         self.assertEqual(str(pawn_black), 'p')
 
     def test_possible_moves_white(self):
+        '''
+        La función test_possible_moves_white es una prueba unitaria que verifica los movimientos posibles de un peón blanco desde diferentes posiciones.
+        '''
         pawn = Pawn('WHITE')
         # Movimientos desde la posición inicial (6, 3)
         expected_moves_initial = [(5, 3), (4, 3)]
@@ -25,6 +31,9 @@ class TestPawn(unittest.TestCase):
         self.assertIn((4, 4), possible_moves)
 
     def test_possible_moves_black(self):
+        '''
+        La función test_possible_moves_black es una prueba unitaria que verifica los movimientos posibles de un peón negro desde diferentes posiciones.
+        '''
         pawn = Pawn('BLACK')
         # Movimientos desde la posición inicial (1, 3)
         expected_moves_initial = [(2, 3), (3, 3)]

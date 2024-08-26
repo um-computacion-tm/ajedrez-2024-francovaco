@@ -7,6 +7,12 @@ from knight import Knight
 
 class Board:
     def __init__(self):
+        '''
+        La función crea una instancia de la clase Board.
+        Funcionamiento:
+        La función crea el atributo privado __positions__ que es una matriz de 8x8.
+        La función coloca las piezas en sus posiciones iniciales en el tablero.
+        '''
         self.__positions__ = []
 
         # Matriz de 8x8
@@ -49,15 +55,37 @@ class Board:
 
     # Obtener tablero
     def get_board(self):
+        '''
+        La función retorna el tablero del juego.
+        Funcionamiento:
+        La función recorre la matriz de posiciones y crea una nueva matriz con las representaciones de las piezas en el tablero.
+        Retorna la nueva matriz con las representaciones de las piezas en el tablero.
+        '''
         for row in self.__positions__:
             return [[str(piece) if piece is not None else '.' for piece in row] for row in self.__positions__]
 
     # Obtener piezas
     def get_piece(self, row, col):
+        '''
+        La función obtiene la pieza en la posición dada.
+        Funcionamiento:
+        La función retorna la pieza en la posición dada.
+        Parámetros:
+        row: Recibe la fila de la posición.
+        col: Recibe la columna de la posición.
+        '''
         return self.__positions__[row][col]
     
     # Obtener color de la pieza
     def get_piece_color(self, row, col):
+        '''
+        La función obtiene el color de la pieza en la posición dada.
+        Funcionamiento:
+        La función obtiene la pieza en la posición dada y retorna el color de la pieza.
+        Parámetros:
+        row: Recibe la fila de la posición.
+        col: Recibe la columna de la posición.
+        '''
         piece = self.get_piece(row, col)
         if piece is not None:
             return piece.get_color()
@@ -65,24 +93,84 @@ class Board:
 
     # Validar movimiento
     def is_valid_move(self, from_row, from_col, to_row, to_col):
+        '''
+        La función verifica si un movimiento es válido.
+        Funcionamiento:
+        La función obtiene la pieza en la posición de origen.
+        La función obtiene los posibles movimientos de la pieza en la posición de origen.
+        La función verifica si la posición de destino está en los posibles movimientos de la pieza.
+        Retorna True si el movimiento es válido, False en caso contrario.
+        Parámetros:
+        from_row: Recibe la fila de la posición de origen.
+        from_col: Recibe la columna de la posición de origen.
+        to_row: Recibe la fila de la posición de destino.
+        to_col: Recibe la columna de la posición de destino.
+        '''
         piece = self.get_piece(from_row, from_col)
         if piece is None:
             return False
-        
         possible_moves = piece.possible_moves(from_row, from_col)
         return (to_row, to_col) in possible_moves
 
     # Mover pieza
     def move_piece(self, from_row, from_col, to_row, to_col):
-        
+        '''
+        La función mueve una pieza en el tablero.
+        Funcionamiento:
+        La función obtiene la pieza en la posición de origen.
+        La función verifica si hay una pieza en la posición de origen.
+        La función verifica si la pieza en la posición de destino es del mismo color que la pieza en la posición de origen.
+        La función mueve la pieza a la posición de destino.
+        La función verifica si el juego ha terminado.
+        Parámetros:
+        from_row: Recibe la fila de la posición de origen.
+        from_col: Recibe la columna de la posición de origen.
+        to_row: Recibe la fila de la posición de destino.
+        to_col: Recibe la columna de la posición de destino.
+        '''
         piece = self.__positions__[from_row][from_col]
         if piece is None:
             raise ValueError("No hay ninguna pieza en la posición de origen.")
-
         target_piece = self.__positions__[to_row][to_col]
-        if target_piece is not None and target_piece.get_color == piece.get_color:
+        if target_piece is not None and target_piece.get_color() == piece.get_color():
             raise ValueError("No puedes capturar tus propias piezas.")
 
         # Mover la pieza
         self.__positions__[to_row][to_col] = piece
         self.__positions__[from_row][from_col] = None
+
+        # Verificar si el juego ha terminado
+        self.check_game_over()
+
+    def check_game_over(self):
+        '''
+        La función verifica si el juego ha terminado.
+        Funcionamiento:
+        La función cuenta el número de piezas blancas y negras en el tablero.
+        La función lanza una excepción GameOverException con el mensaje "Ha ganado el Blanco" si no hay piezas negras en el tablero.
+        La función lanza una excepción GameOverException con el mensaje "Ha ganado el Negro" si no hay piezas blancas en el tablero.
+        '''
+        white_pieces = 0
+        black_pieces = 0
+        for row in self.__positions__:
+            for piece in row:
+                if piece is not None:
+                    if piece.get_color() == 'WHITE':
+                        white_pieces += 1
+                    elif piece.get_color() == 'BLACK':
+                        black_pieces += 1
+        if white_pieces == 0:
+            raise GameOverException("Ha ganado el Negro")
+        elif black_pieces == 0:
+            raise GameOverException("Ha ganado el Blanco")
+
+class GameOverException(Exception):
+    def __init__(self, message):
+        '''
+        La función __init__ es el constructor de la excepción GameOverException.
+        Inicializa la excepción con un mensaje específico.
+        Parámetros:
+        message: Un mensaje de tipo str que describe la razón por la cual se lanza la excepción.
+        '''
+        self.__message__ = message
+        super().__init__(self.__message__)

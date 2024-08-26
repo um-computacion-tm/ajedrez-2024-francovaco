@@ -1,4 +1,4 @@
-from board import Board
+from board import Board, GameOverException
 
 
 class Chess:
@@ -29,29 +29,33 @@ class Chess:
         Se verifica que la pieza pertenezca al jugador actual.
         Se verifica que el movimiento sea válido y se mueve la pieza.
         Se cambia el turno.
-        Parametros:
+        Parámetros:
         from_row: Recibe la fila de la posición de origen.
         from_col: Recibe la columna de la posición de origen.
         to_row: Recibe la fila de la posición de destino.
         to_col: Recibe la columna de la posición de destino.
         '''
-        # Obtener el color de la pieza en la posición de origen
-        piece_color = self.__board__.get_piece_color(from_row, from_col)
-        if piece_color is None:
-            raise ValueError("No hay ninguna pieza en la posición de origen.")
-        
-        # Verificar que la pieza pertenece al jugador actual
-        if piece_color != self.__turn__:
-            raise ValueError("No es el turno de la pieza seleccionada.")
-        
-        # Verificar que el movimiento es válido y mover la pieza
-        if not self.__board__.is_valid_move(from_row, from_col, to_row, to_col):
-            raise ValueError("Movimiento no válido para la pieza seleccionada.")
-        
-        self.__board__.move_piece(from_row, from_col, to_row, to_col)
-        
-        # Cambiar el turno
-        self.change_turn()        
+        try:
+            # Obtener el color de la pieza en la posición de origen
+            piece_color = self.__board__.get_piece_color(from_row, from_col)
+            if piece_color is None:
+                raise ValueError("No hay ninguna pieza en la posición de origen.")
+            
+            # Verificar que la pieza pertenece al jugador actual
+            if piece_color != self.__turn__:
+                raise ValueError("No es el turno de la pieza seleccionada.")
+            
+            # Verificar que el movimiento es válido y mover la pieza
+            if not self.__board__.is_valid_move(from_row, from_col, to_row, to_col):
+                raise ValueError("Movimiento no válido para la pieza seleccionada.")
+            
+            self.__board__.move_piece(from_row, from_col, to_row, to_col)
+            
+            # Cambiar el turno
+            self.change_turn()    
+
+        except GameOverException as e:
+            raise e    
    
     @property
     def turn(self):

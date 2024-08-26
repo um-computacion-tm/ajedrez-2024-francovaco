@@ -24,7 +24,7 @@ class Queen(Piece):
         Se crea una variable new_col que almacena la suma de la posición de la columna actual y la columna de la dirección.
         Se verifica si la nueva posición está dentro del tablero.
         Se agrega la nueva posición a la lista moves.
-        Parametros:
+        Parámetros:
         from_row: Recibe la fila de la posición actual de la reina.
         from_col: Recibe la columna de la posición actual de la reina.
         '''

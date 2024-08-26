@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.8] - 26-08-2024
+
+### Agregado:
+-Creación de finalización del juego al perder todas las fichas 
+
 ## [0.7] - 25-08-2024
 
 ### Agregado:

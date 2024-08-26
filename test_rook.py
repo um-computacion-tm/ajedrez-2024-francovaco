@@ -4,12 +4,18 @@ from rook import Rook
 class TestRook(unittest.TestCase):
 
     def test_str_method(self):
+        '''
+        La función test_str_method es una prueba unitaria que verifica que el método __str__ de la clase Rook devuelva 'R' para una pieza blanca y 'r' para una pieza negra.
+        '''
         rook_white = Rook('WHITE')
         rook_black = Rook('BLACK')
         self.assertEqual(str(rook_white), 'R')
         self.assertEqual(str(rook_black), 'r')
 
     def test_possible_moves_center(self):
+        '''
+        La función test_possible_moves_center es una prueba unitaria que verifica los movimientos posibles de una torre desde el centro del tablero.
+        '''
         rook = Rook('WHITE')
         # Movimientos desde el centro del tablero (4, 4)
         expected_moves = [
@@ -21,6 +27,9 @@ class TestRook(unittest.TestCase):
         self.assertCountEqual(rook.possible_moves(4, 4), expected_moves)
 
     def test_possible_moves_corner(self):
+        '''
+        La función test_possible_moves_corner es una prueba unitaria que verifica los movimientos posibles de una torre desde una esquina del tablero.
+        '''
         rook = Rook('WHITE')
         # Movimientos desde la esquina superior izquierda (0, 0)
         expected_moves = [
@@ -30,6 +39,9 @@ class TestRook(unittest.TestCase):
         self.assertCountEqual(rook.possible_moves(0, 0), expected_moves)
 
     def test_possible_moves_edge(self):
+        '''
+        La función test_possible_moves_edge es una prueba unitaria que verifica los movimientos posibles de una torre desde el borde del tablero.
+        '''
         rook = Rook('WHITE')
         # Movimientos desde el borde del tablero (0, 4)
         expected_moves = [

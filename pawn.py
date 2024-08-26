@@ -23,7 +23,7 @@ class Pawn(Piece):
         Se agrega la posición hacia adelante a la lista moves si la posición es la inicial.
         Se agrega la posición diagonal izquierda a la lista moves.
         Se agrega la posición diagonal derecha a la lista moves.
-        Parametros:
+        Parámetros:
         row: Recibe la fila de la posición actual del peón.
         col: Recibe la columna de la posición actual del peón.
         '''
