@@ -4,12 +4,18 @@ from bishop import Bishop
 class TestBishop(unittest.TestCase):
 
     def test_str_method(self):
+        '''
+        La función test_str_method es una prueba unitaria que verifica que el método __str__ de la clase Bishop devuelva 'B' para una pieza blanca y 'b' para una pieza negra.
+        '''
         bishop_white = Bishop('WHITE')
         bishop_black = Bishop('BLACK')
         self.assertEqual(str(bishop_white), 'B')
         self.assertEqual(str(bishop_black), 'b')
 
     def test_possible_moves(self):
+        '''
+        La función test_possible_moves es una prueba unitaria que verifica los movimientos posibles de un alfil desde el centro del tablero.
+        '''
         bishop = Bishop('WHITE')
         expected_moves = [
             (2, 2), (1, 1), (0, 0),  # Diagonal superior izquierda

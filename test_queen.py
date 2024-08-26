@@ -4,12 +4,18 @@ from queen import Queen
 class TestQueen(unittest.TestCase):
 
     def test_str_method(self):
+        '''
+        La función test_str_method es una prueba unitaria que verifica que el método __str__ de la clase Queen devuelva 'Q' para una pieza blanca y 'q' para una pieza negra.
+        '''
         queen_white = Queen('WHITE')
         queen_black = Queen('BLACK')
         self.assertEqual(str(queen_white), 'Q')
         self.assertEqual(str(queen_black), 'q')
 
     def test_possible_moves_center(self):
+        '''
+        La función test_possible_moves_center es una prueba unitaria que verifica los movimientos posibles de una reina desde el centro del tablero.
+        '''
         queen = Queen('WHITE')
         # Movimientos desde el centro del tablero (4, 4)
         expected_moves = [
@@ -25,6 +31,9 @@ class TestQueen(unittest.TestCase):
         self.assertCountEqual(queen.possible_moves(4, 4), expected_moves)
 
     def test_possible_moves_corner(self):
+        '''
+        La función test_possible_moves_corner es una prueba unitaria que verifica los movimientos posibles de una reina desde una esquina del tablero.
+        '''
         queen = Queen('WHITE')
         # Movimientos desde la esquina superior izquierda (0, 0)
         expected_moves = [
@@ -35,6 +44,9 @@ class TestQueen(unittest.TestCase):
         self.assertCountEqual(queen.possible_moves(0, 0), expected_moves)
 
     def test_possible_moves_edge(self):
+        '''
+        La función test_possible_moves_edge es una prueba unitaria que verifica los movimientos posibles de una reina desde el borde del tablero.
+        '''
         queen = Queen('WHITE')
         # Movimientos desde el borde del tablero (0, 4)
         expected_moves = [
