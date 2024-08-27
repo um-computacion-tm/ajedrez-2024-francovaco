@@ -120,6 +120,7 @@ class Board:
         La función obtiene la pieza en la posición de origen.
         La función verifica si hay una pieza en la posición de origen.
         La función verifica si la pieza en la posición de destino es del mismo color que la pieza en la posición de origen.
+        La función verifica si hay piezas en el camino.
         La función mueve la pieza a la posición de destino.
         La función verifica si el juego ha terminado.
         Parámetros:
@@ -135,12 +136,45 @@ class Board:
         if target_piece is not None and target_piece.get_color() == piece.get_color():
             raise ValueError("No puedes capturar tus propias piezas.")
 
+        # Verificar si hay piezas en el camino
+        if not self.is_path_clear(from_row, from_col, to_row, to_col):
+            raise ValueError("No puedes pasar por encima de otras piezas.")
+
         # Mover la pieza
         self.__positions__[to_row][to_col] = piece
         self.__positions__[from_row][from_col] = None
 
         # Verificar si el juego ha terminado
         self.check_game_over()
+
+    def is_path_clear(self, from_row, from_col, to_row, to_col):
+        '''
+        La función verifica si el camino entre la posición de origen y la posición de destino está libre.
+        Parámetros:
+        from_row: Recibe la fila de la posición de origen.
+        from_col: Recibe la columna de la posición de origen.
+        to_row: Recibe la fila de la posición de destino.
+        to_col: Recibe la columna de la posición de destino.
+        Retorna:
+        True si el camino está libre, False en caso contrario.
+        '''
+        piece = self.__positions__[from_row][from_col]
+        
+        # Verificar si la pieza es un caballo
+        if piece is not None and piece.__str__() == 'n' or piece.__str__() == 'N':
+            return True
+
+        row_step = 1 if to_row > from_row else -1 if to_row < from_row else 0
+        col_step = 1 if to_col > from_col else -1 if to_col < from_col else 0
+
+        current_row, current_col = from_row + row_step, from_col + col_step
+        while current_row != to_row or current_col != to_col:
+            if self.__positions__[current_row][current_col] is not None:
+                return False
+            current_row += row_step
+            current_col += col_step
+
+        return True
 
     def check_game_over(self):
         '''
