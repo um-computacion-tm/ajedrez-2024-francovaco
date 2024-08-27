@@ -1,5 +1,5 @@
 import unittest
-from rook import Rook
+from game.rook import Rook
 
 class TestRook(unittest.TestCase):
 

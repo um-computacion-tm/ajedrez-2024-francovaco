@@ -1,5 +1,5 @@
 import unittest
-from board import Board, GameOverException
+from game.board import Board, GameOverException
 
 class TestBoard(unittest.TestCase):
     def test_is_valid_move_no_piece(self):

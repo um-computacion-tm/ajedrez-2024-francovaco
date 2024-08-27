@@ -1,7 +1,10 @@
 [run]
+source =
+    game
+    tests
 omit =
     venv/*
-    */test/*
+    */tests/*
     */test*
     */__init__.py
 [report]

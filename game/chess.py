@@ -1,4 +1,4 @@
-from board import Board, GameOverException
+from game.board import Board, GameOverException
 
 
 class Chess:
