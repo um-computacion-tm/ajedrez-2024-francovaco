@@ -1,4 +1,4 @@
-from game.chess import Chess, GameOverException
+from chess import Chess, GameOverException
 
 def main():
     chess = Chess()

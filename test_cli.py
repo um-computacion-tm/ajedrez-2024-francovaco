@@ -1,7 +1,7 @@
 import unittest
 import sys
 from io import StringIO
-from game.cli import play, show_board_with_icons
+from cli import play, show_board_with_icons
 from unittest.mock import patch, MagicMock
 
 class TestCli(unittest.TestCase):

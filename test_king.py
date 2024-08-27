@@ -1,5 +1,5 @@
 import unittest
-from game.king import King
+from king import King
 
 class TestKing(unittest.TestCase):
 
