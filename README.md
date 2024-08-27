@@ -13,6 +13,7 @@ Franco Vaccarezza
 ## Descripción:
 
 Este proyecto es un juego de ajedrez implementado en Python utilizando un enfoque orientado a objetos. El juego permite a dos jugadores enfrentarse, respetando parte las reglas estándar de los movimientos del ajedrez.
+El juego no cuenta con jaque, jaque mate, tablas, enrroque, coronación ni controles de tiempo.
 
 ## Características:
 
@@ -28,7 +29,7 @@ Además en cualquier momento de la partida los jugadores pueden finalizar el jue
 
 ## Requisitos:
 
-Para correr el juego se requiere Python 3.x
+Para correr el juego se requiere [Python](https://www.python.org/downloads/) 3.x
 
 ## instalación:
 
