@@ -14,5 +14,5 @@ exclude_lines =
     print
     if __name__ == "__main__":
     def suite
-    __str__
+    __str__*
     main()
