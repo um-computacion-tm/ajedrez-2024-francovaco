@@ -30,5 +30,17 @@ class TestBoard(unittest.TestCase):
             board.move_piece(7, 0, 6, 0)
         self.assertEqual(str(context.exception), "No puedes capturar tus propias piezas.")
 
+    def test_move_piece_over_other(self):
+        '''
+        La función test_move_piece_raises_value_error verifica que se lanza un ValueError con el mensaje "No puedes pasar por encima de otras piezas." cuando una pieza intenta moverse a través de otra.
+        '''
+        board = Board()
+        board.__positions__ = [[None for _ in range(8)] for _ in range(8)]
+        board.__positions__[0][0] = 'P'
+        board.__positions__[0][1] = 'P'
+        with self.assertRaises(ValueError) as context:
+            board.move_piece(0, 0, 0, 2)
+        self.assertEqual(str(context.exception), "No puedes pasar por encima de otras piezas.")
+
 if __name__ == '__main__':
     unittest.main()
