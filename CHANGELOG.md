@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9] - 29-08-2024
+
+### Agregado:
+-Creación test restricción salto de piezas
+
+### Mejoras: 
+-Corrección de error al saltar piezas
+
 ## [0.8] - 26-08-2024
 
 ### Agregado:

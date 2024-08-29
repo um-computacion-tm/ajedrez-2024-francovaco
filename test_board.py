@@ -42,5 +42,11 @@ class TestBoard(unittest.TestCase):
             board.move_piece(0, 0, 0, 2)
         self.assertEqual(str(context.exception), "No puedes pasar por encima de otras piezas.")
 
+    def test_game_over_exception_message(self):
+        message = "Ha ganado el Blanco"
+        exception = GameOverException(message)
+        self.assertEqual(exception.__message__, message)
+        self.assertEqual(str(exception), message)
+
 if __name__ == '__main__':
     unittest.main()
