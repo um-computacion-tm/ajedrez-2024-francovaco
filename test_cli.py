@@ -175,6 +175,54 @@ class TestCli(unittest.TestCase):
         sys.stdout = sys.__stdout__
         self.assertIn("Debe ingresar valores numéricos entre 0 y 7.", captured_output.getvalue())
 
+    @patch('builtins.input', side_effect=['&', '0', '1', '1'])
+    @patch('cli.show_board_with_icons')
+    def test_coordenadas_simbolo_from_row(self, mock_show_board, mock_input):
+        chess = MagicMock()
+        chess.get_board.return_value = [['.']*8 for _ in range(8)]
+        chess.turn = 'white'
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        play(chess)
+        sys.stdout = sys.__stdout__
+        self.assertIn("Debe ingresar valores numéricos entre 0 y 7.", captured_output.getvalue())
+    
+    @patch('builtins.input', side_effect=['0', '&', '1', '1'])
+    @patch('cli.show_board_with_icons')
+    def test_coordenadas_simbolo_from_col(self, mock_show_board, mock_input):
+        chess = MagicMock()
+        chess.get_board.return_value = [['.']*8 for _ in range(8)]
+        chess.turn = 'white'
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        play(chess)
+        sys.stdout = sys.__stdout__
+        self.assertIn("Debe ingresar valores numéricos entre 0 y 7.", captured_output.getvalue())
+
+    @patch('builtins.input', side_effect=['0', '0', '&', '1'])
+    @patch('cli.show_board_with_icons')
+    def test_coordenadas_simbolo_to_row(self, mock_show_board, mock_input):
+        chess = MagicMock()
+        chess.get_board.return_value = [['.']*8 for _ in range(8)]
+        chess.turn = 'white'
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        play(chess)
+        sys.stdout = sys.__stdout__
+        self.assertIn("Debe ingresar valores numéricos entre 0 y 7.", captured_output.getvalue())
+
+    @patch('builtins.input', side_effect=['0', '0', '1', '&'])
+    @patch('cli.show_board_with_icons')
+    def test_coordenadas_simbolo_to_col(self, mock_show_board, mock_input):
+        chess = MagicMock()
+        chess.get_board.return_value = [['.']*8 for _ in range(8)]
+        chess.turn = 'white'
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        play(chess)
+        sys.stdout = sys.__stdout__
+        self.assertIn("Debe ingresar valores numéricos entre 0 y 7.", captured_output.getvalue())
+
     @patch('builtins.input', side_effect=['0', '0', '8', '1'])
     @patch('cli.show_board_with_icons')
     def test_coordenadas_fuera_de_rango_to_row(self, mock_show_board, mock_input):
