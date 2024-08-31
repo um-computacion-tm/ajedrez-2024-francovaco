@@ -2,6 +2,7 @@ from piece import Piece
 
 class Pawn(Piece):
     
+    # Letra que representa al peón en el tablero
     def __str__(self):
         '''
         La función retorna la letra que representa al peón en el tablero.
@@ -12,6 +13,7 @@ class Pawn(Piece):
         '''
         return 'P' if self.__color__ == 'WHITE' else 'p'
     
+    # Movimientos posibles del peón
     def possible_moves(self, row, col):
         '''
         La función retorna una lista con las posiciones a las que el peón puede moverse.

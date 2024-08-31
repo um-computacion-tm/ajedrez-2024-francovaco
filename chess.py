@@ -2,6 +2,7 @@ from board import Board, GameOverException
 
 
 class Chess:
+    # Inicializar juego
     def __init__(self):
         '''
         La función crea una instancia de la clase Chess.
@@ -9,9 +10,12 @@ class Chess:
         La función crea el atributo privado __board__ de la clase Board.
         La función crea el atributo privado __turn__ que indica el turno del jugador.
         '''
+        # Crear tablero
         self.__board__ = Board()
+        # Crear turno
         self.__turn__ = "WHITE"
 
+    # Obtener tablero
     def get_board(self):
         '''
         La función retorna el tablero del juego.
@@ -19,7 +23,8 @@ class Chess:
         Retorna el tablero del juego.
         '''
         return self.__board__.get_board()
-        
+
+    # Mover pieza    
     def move(self, from_row, from_col, to_row, to_col):
         '''
         La función mueve una pieza del tablero.
@@ -57,6 +62,7 @@ class Chess:
         except GameOverException as e:
             raise e    
    
+    # Obtener turno
     @property
     def turn(self):
         '''
@@ -66,6 +72,7 @@ class Chess:
         '''
         return self.__turn__
 
+    # Cambiar turno
     def change_turn(self):
         '''
         La función cambia el turno del jugador.

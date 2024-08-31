@@ -2,7 +2,7 @@ from piece import Piece
 
 class Knight(Piece):
 
-    #Letra que representa al caballo
+    #Letra que representa al caballo en el tablero
     def __str__(self):
         '''
         La función retorna la letra que representa al caballo en el tablero.

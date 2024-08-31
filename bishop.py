@@ -2,6 +2,7 @@ from piece import Piece
 
 class Bishop(Piece):
 
+    # Letra que representa al alfil en el tablero
     def __str__(self):
         '''
         La función retorna la letra que representa al alfil en el tablero.

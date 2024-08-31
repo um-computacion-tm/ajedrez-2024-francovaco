@@ -1,5 +1,6 @@
 class Piece:
 
+    # Constructor de la clase
     def __init__(self, color):
         '''
         Constructor de la clase.
@@ -10,6 +11,7 @@ class Piece:
         '''
         self.__color__ = color
 
+    # Obtener color de la pieza
     def get_color(self):
         '''
         La función retorna el valor del atributo privado __color__ de la pieza.
