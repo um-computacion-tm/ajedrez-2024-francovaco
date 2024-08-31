@@ -6,6 +6,7 @@ from bishop import Bishop
 from knight import Knight
 
 class Board:
+    # Inicializar tablero
     def __init__(self):
         '''
         La función crea una instancia de la clase Board.

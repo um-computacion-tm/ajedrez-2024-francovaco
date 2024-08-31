@@ -2,6 +2,7 @@ from piece import Piece
 
 class Queen(Piece):
 
+    # Letra que representa a la reina en el tablero
     def __str__(self):
         '''
         La función retorna la letra que representa a la reina en el tablero.

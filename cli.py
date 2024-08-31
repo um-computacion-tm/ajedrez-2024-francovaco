@@ -1,5 +1,6 @@
 from chess import Chess, GameOverException
 
+# Función principal
 def main():
     chess = Chess()
     while True: 
@@ -9,6 +10,7 @@ def main():
             print(str(e))
             exit()
 
+# Mostrar tablero con iconos
 def show_board_with_icons(board):
     '''
     La función show_board_with_icons() tiene como objetivo mostrar un tablero de ajedrez utilizando iconos para representar las piezas.

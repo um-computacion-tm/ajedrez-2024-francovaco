@@ -2,6 +2,7 @@ from piece import Piece
 
 class Rook(Piece):
 
+    # Letra que representa a la torre en el tablero
     def __str__(self):
         '''
         La función retorna la letra que representa a la torre en el tablero.
