@@ -40,6 +40,15 @@ checks:
     enabled: true
     config:
       threshold: #language-specific defaults. overrides affect all languages.
+duplication:
+  config:
+    languages:
+      python:
+        mass_threshold: 50
+        nodes:
+          - function
+          - class
+        ignore_docstrings: true
 
 exclude_patterns:
 - "config/"
