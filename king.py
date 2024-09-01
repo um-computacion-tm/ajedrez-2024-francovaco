@@ -1,7 +1,7 @@
 from piece import Piece
 
 class King(Piece):
-    
+
     # Letra que representa al rey en el tablero
     def __str__(self):
         '''
@@ -12,8 +12,8 @@ class King(Piece):
         Si no, retorna 'k'.
         '''
         return 'K' if self.__color__ == 'WHITE' else 'k'
-
-    #Movimientos posibles del rey
+    
+    # Movimientos posibles del rey
     def possible_moves(self, from_row, from_col):
         '''
         La función retorna una lista con las posiciones a las que el rey puede moverse.

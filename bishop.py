@@ -13,7 +13,7 @@ class Bishop(Piece):
         '''
         return 'B' if self.__color__ == 'WHITE' else 'b'
     
-    #Movimientos posibles del alfil
+    # Movimientos posibles del alfil
     def possible_moves(self, from_row, from_col):
         '''
         La función retorna una lista con las posiciones a las que el alfil puede moverse.
