@@ -13,7 +13,7 @@ class Rook(Piece):
         '''
         return 'R' if self.__color__ == 'WHITE' else 'r'
     
-    #Movimientos posibles de la torre
+    # Movimientos posibles de la torre
     def possible_moves(self, from_row, from_col):
         '''
         La función retorna una lista con las posiciones a las que la torre puede moverse.

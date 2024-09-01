@@ -3,3 +3,7 @@ __pycache__/
 ajedrez/
 circle/
 ajedrez.txt
+king_error.py
+knight_error.py
+bishop_error.py
+rook_error.py

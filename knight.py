@@ -2,7 +2,7 @@ from piece import Piece
 
 class Knight(Piece):
 
-    #Letra que representa al caballo en el tablero
+    # Letra que representa al caballo en el tablero
     def __str__(self):
         '''
         La función retorna la letra que representa al caballo en el tablero.
@@ -13,7 +13,7 @@ class Knight(Piece):
         '''
         return 'N' if self.__color__ == 'WHITE' else 'n'
     
-    #Movimientos posibles del caballo
+    # Movimientos posibles del caballo
     def possible_moves(self, from_row, from_col):
         '''
         La función retorna una lista con las posiciones a las que el caballo puede moverse.
