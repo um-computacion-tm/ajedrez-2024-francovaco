@@ -18,7 +18,7 @@ El juego no cuenta con jaque, jaque mate, tablas, enrroque, coronación ni contr
 ## Características:
 
 El juego esta diseñado en Python orientado a objetos implementando algunas de las reglas del ajedrez. No cuenta con enroque, jaque, jaque mate y tablas.
-El juego se ejecuta en la consola con un tablero mostrado en texto con simbolos Unicode.
+El juego se ejecuta en la consola con un tablero mostrado en texto con simbolos Unicode. En este caso los símbolos estan invertidos, se utilizan los negros para las piezas blancas y los blancos par las piezas negras, ya que en la consola los simbolos blancos se ven de color negro y los negros de color blanco. Es simplemente para no generar confusiones.
 El código esta diseñado para futuras mejoras como puede ser una interfaz gráfica, guradado de partidas para su continuación en otro momento y el agregado de las reglas faltantes.
 El juego finaliza cuando uno de los jugadores le come todas las piezas al otro o cuando los jugadores deseen finalizarlo ingresando la opcion SALIR 
 

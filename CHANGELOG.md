@@ -5,7 +5,7 @@
 ### Agregado:
 -Creación test restricción salto de piezas
 
-### Mejoras: 
+### Arreglos: 
 -Corrección de error al saltar piezas
 
 ## [0.8] - 26-08-2024
@@ -41,7 +41,7 @@
 
 ### Agregado:
 -Creación de los test de la interfaz de usuario.
--Salir de juego con el string SALIR.
+-Salir de juego con el string "SALIR".
 
 ## [0.2] - 15-08-2024
 
