@@ -1,5 +1,5 @@
 import unittest
-from chess import Chess, GameOverException  
+from chess import Chess, GameOverException, Board 
 
 class TestChess(unittest.TestCase):
     def test_init(self):
