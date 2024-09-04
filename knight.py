@@ -15,8 +15,5 @@ class Knight(Piece):
     
     # Movimientos posibles del caballo
     def possible_moves(self, from_row, from_col):
-        directions = [
-            (2, 1), (2, -1), (-2, 1), (-2, -1),
-            (1, 2), (1, -2), (-1, 2), (-1, -2)
-        ] 
+        directions = [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2)] 
         return super().possible_moves_general(from_row, from_col, directions)
