@@ -20,7 +20,7 @@ class Piece:
         '''
         return self.__color__
     
-    def possible_moves_recto(self, from_row, from_col, directions):
+    def possible_moves_general(self, from_row, from_col, directions):
         moves = []
 
         for direction in directions:
