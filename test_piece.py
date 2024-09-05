@@ -34,6 +34,6 @@ class TestPiece(unittest.TestCase):
         '''
         piece = Piece("BLACK")
         self.assertEqual(piece.get_color(), "BLACK")
-
+        
 if __name__ == '__main__':
     unittest.main()

@@ -22,10 +22,13 @@ class Piece:
     
     def possible_moves_general(self, from_row, from_col, directions):
         moves = []
-
         for direction in directions:
-            new_row = from_row + direction[0]
-            new_col = from_col + direction[1]      
-            if 0 <= new_row < 8 and 0 <= new_col < 8:
-                moves.append((new_row, new_col))          
+            new_row, new_col = from_row, from_col
+            while True:
+                new_row += direction[0]
+                new_col += direction[1]
+                if 0 <= new_row < 8 and 0 <= new_col < 8:
+                    moves.append((new_row, new_col))
+                else:
+                    break
         return moves
