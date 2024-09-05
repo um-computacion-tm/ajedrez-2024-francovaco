@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import MagicMock
 from rook import Rook
 
 class TestRook(unittest.TestCase):
