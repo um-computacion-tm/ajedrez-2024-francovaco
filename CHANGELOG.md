@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.9.1] - 03-09-2024
+
+### Arreglos:
+-Corrección de duplicación de código 
+
 ## [0.9] - 29-08-2024
 
 ### Agregado:

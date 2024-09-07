@@ -1,5 +1,7 @@
 class Piece:
 
+    __queen_king_directions__ = [(-1, -1), (-1, 1), (1, -1), (1, 1), (-1, 0), (1, 0), (0, -1), (0, 1)]
+
     # Constructor de la clase
     def __init__(self, color):
         '''

@@ -2,8 +2,6 @@ from piece import Piece
 
 class Knight(Piece):
 
-    __directions__ = [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2)]
-
     # Letra que representa al caballo en el tablero
     def __str__(self):
         '''
@@ -17,4 +15,5 @@ class Knight(Piece):
     
     # Movimientos posibles del caballo
     def possible_moves(self, from_row, from_col):
-        return super().possible_moves_general(from_row, from_col, self.__directions__)
+        directions = [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2)] 
+        return super().possible_moves_general(from_row, from_col, directions)
