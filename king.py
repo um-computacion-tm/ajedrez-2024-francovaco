@@ -14,6 +14,5 @@ class King(Piece):
         return 'K' if self.__color__ == 'WHITE' else 'k'
     
     # Movimientos posibles del rey
-    def possible_moves(self, from_row, from_col):
-        directions = [(-1, -1), (-1, 1), (1, -1), (1, 1), (-1, 0), (1, 0), (0, -1), (0, 1)]          
-        return super().possible_moves_general(from_row, from_col, directions)
+    def possible_moves(self, from_row, from_col):       
+        return super().possible_moves_general(from_row, from_col, self.__queen_king_directions__)

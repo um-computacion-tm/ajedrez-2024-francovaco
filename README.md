@@ -2,7 +2,7 @@
 
 Franco Vaccarezza 
 
-## Testeos
+## Testeos:
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/um-computacion-tm/ajedrez-2024-francovaco/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/um-computacion-tm/ajedrez-2024-francovaco/tree/main)
 
@@ -13,36 +13,49 @@ Franco Vaccarezza
 ## Descripción:
 
 Este proyecto es un juego de ajedrez implementado en Python utilizando un enfoque orientado a objetos. El juego permite a dos jugadores enfrentarse, respetando parte las reglas estándar de los movimientos del ajedrez.
-El juego no cuenta con jaque, jaque mate, tablas, enrroque, coronación ni controles de tiempo.
 
 ## Características:
 
-El juego esta diseñado en Python orientado a objetos implementando algunas de las reglas del ajedrez. No cuenta con enroque, jaque, jaque mate y tablas.
-El juego se ejecuta en la consola con un tablero mostrado en texto con simbolos Unicode. En este caso los símbolos estan invertidos, se utilizan los negros para las piezas blancas y los blancos par las piezas negras, ya que en la consola los simbolos blancos se ven de color negro y los negros de color blanco. Es simplemente para no generar confusiones.
+El juego esta diseñado en Python orientado a objetos implementando algunas de las reglas del ajedrez.
+El juego no cuenta con jaque, jaque mate, tablas, enrroque, coronación ni controles de tiempo.
+El juego se ejecuta en la consola con un tablero mostrado en texto con símbolos Unicode. En este caso los símbolos estan invertidos, se utilizan los negros para las piezas blancas y los blancos par las piezas negras, ya que en la consola, con el fondo negro, los símbolos blancos se ven de color negro y los negros de color blanco. Es simplemente para no generar confusiones.
 El código esta diseñado para futuras mejoras como puede ser una interfaz gráfica, guradado de partidas para su continuación en otro momento y el agregado de las reglas faltantes.
-El juego finaliza cuando uno de los jugadores le come todas las piezas al otro o cuando los jugadores deseen finalizarlo ingresando la opcion SALIR 
+El juego finaliza cuando uno de los jugadores le come todas las piezas al otro o cuando los jugadores deseen finalizarlo ingresando la opción SALIR 
 
 ## ¿Como se juega?
 
-El juego se juega como cualquier juego de ajedrez entre dos jugadores, inicia el juego con el turno de las fichas blancas y cada jugador va moviendo sus fichas y comiendo las del oponente en su turno. El jugador que se queda sin fichas pierde.
+Este ajedrez se juega como cualquier juego de ajedrez entre dos jugadores, inicia el juego con el turno de las fichas blancas y cada jugador va moviendo sus fichas y comiendo las del oponente en su turno. El jugador que se queda sin fichas pierde.
 Además en cualquier momento de la partida los jugadores pueden finalizar el juego ingresando la opción SALIR. 
 
 ## Requisitos:
 
-Para correr el juego se requiere [Python](https://www.python.org/downloads/) 3.x
+Para correr el juego se requiere [Docker](https://docs.docker.com) 
 
-## instalación:
+## Comandos que debe ejecutar desde la terminal
+
+### Instalación:
+
+Instalación de Docker
+
+```bash
+sudo apt install docker
+```
 
 Clonar el [repositorio](https://github.com/um-computacion-tm/ajedrez-2024-francovaco.git) del juego 
-
 
 ```bash
 git clone https://github.com/um-computacion-tm/ajedrez-2024-francovaco.git
 ```
-Ejecutar el juego
+### Ejecutar el juego
 
-Depués de clonar el repositorio se debe ingresar a la carpeta y dentro de ella en la terminal ejecutar el siguiente comando
+Crear imágen de Docker del juego
 
 ```bash
-python cli.py
+docker buildx build -t ajedrez-2024-francovaco .
+```
+
+Ejecutar los tests y el juego
+
+```bash
+docker run -i ajedrez-2024-francovaco
 ```
