@@ -1,7 +1,5 @@
 class Piece:
 
-    __queen_king_directions__ = [(-1, -1), (-1, 1), (1, -1), (1, 1), (-1, 0), (1, 0), (0, -1), (0, 1)]
-
     # Constructor de la clase
     def __init__(self, color):
         '''
@@ -22,7 +20,7 @@ class Piece:
         '''
         return self.__color__
     
-    def possible_moves_general(self, from_row, from_col, directions):
+    def possible_moves_general(self, from_row, from_col, directions, single_step=False):
         moves = []
         for direction in directions:
             new_row, new_col = from_row, from_col
@@ -31,6 +29,8 @@ class Piece:
                 new_col += direction[1]
                 if 0 <= new_row < 8 and 0 <= new_col < 8:
                     moves.append((new_row, new_col))
+                    if single_step:
+                        break
                 else:
                     break
         return moves

@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.9.2] - 08-09-2024
+
+### Arreglos:
+-Corrección de los movimientos del rey
+
 ## [0.9.1] - 03-09-2024
 
 ### Arreglos:
