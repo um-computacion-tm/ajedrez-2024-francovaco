@@ -14,6 +14,13 @@ class King(Piece):
         return 'K' if self.__color__ == 'WHITE' else 'k'
     
     # Movimientos posibles del rey
-    def possible_moves(self, from_row, from_col):  
-        directions = [(-1, -1), (-1, 1), (1, -1), (1, 1), (-1, 0), (1, 0), (0, -1), (0, 1)]     
-        return super().possible_moves_general(from_row, from_col, directions, single_step=True)
+    def possible_moves(self, from_row, from_col):
+        '''
+        La función retorna los movimientos posibles del rey.
+        Funcionamiento:
+        Se llama a la función possible_moves_general con los parámetros from_row, from_col, self.__queen__king__directions__, single_step=True.
+        Parámetros:
+        from_row: Recibe la fila de la posición actual del rey.
+        from_col: Recibe la columna de la posición actual del rey.
+        '''     
+        return super().possible_moves_general(from_row, from_col, self.__queen__king__directions__, single_step=True)

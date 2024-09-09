@@ -141,6 +141,12 @@ class Board:
         if not self.is_path_clear(from_row, from_col, to_row, to_col):
             raise ValueError("No puedes pasar por encima de otras piezas.")
 
+        # Verificar si el peón intenta capturar hacia adelante
+        if isinstance(piece, Pawn):
+            direction = -1 if piece.get_color() == 'WHITE' else 1
+            if to_row == from_row + direction and to_col == from_col and target_piece is not None:
+                raise ValueError("El peón no puede capturar piezas moviéndose hacia adelante.")
+
         # Mover la pieza
         self.__positions__[to_row][to_col] = piece
         self.__positions__[from_row][from_col] = None
@@ -151,13 +157,18 @@ class Board:
     def is_path_clear(self, from_row, from_col, to_row, to_col):
         '''
         La función verifica si el camino entre la posición de origen y la posición de destino está libre.
+        Funcionamiento:
+        La función obtiene la pieza en la posición de origen.
+        La función verifica si la pieza es un caballo.
+        La función calcula el paso en las filas y columnas.
+        La función recorre las posiciones intermedias entre la posición de origen y la posición de destino.
+        La función verifica si hay una pieza en la posición intermedia.
+        La función retorna True si el camino está libre, False en caso contrario.
         Parámetros:
         from_row: Recibe la fila de la posición de origen.
         from_col: Recibe la columna de la posición de origen.
         to_row: Recibe la fila de la posición de destino.
         to_col: Recibe la columna de la posición de destino.
-        Retorna:
-        True si el camino está libre, False en caso contrario.
         '''
         piece = self.__positions__[from_row][from_col]
         
@@ -208,4 +219,4 @@ class GameOverException(Exception):
         message: Un mensaje de tipo str que describe la razón por la cual se lanza la excepción.
         '''
         self.__message__ = message
-        super().__init__(self.__message__)
+        super().__init__(message)
