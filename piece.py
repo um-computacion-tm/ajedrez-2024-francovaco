@@ -1,5 +1,5 @@
 class Piece:
-
+    
     # Constructor de la clase
     def __init__(self, color):
         '''
@@ -10,7 +10,7 @@ class Piece:
         color: Recibe el parametro color para crear el atributo __color__ del objeto.
         '''
         self.__color__ = color
-        self.__queen__king__directions__ = [(-1, -1), (-1, 1), (1, -1), (1, 1), (-1, 0), (1, 0), (0, -1), (0, 1)]
+        self.__queen_king_directions__ = [(-1, -1), (-1, 1), (1, -1), (1, 1), (-1, 0), (1, 0), (0, -1), (0, 1)]
         
     # Obtener color de la pieza
     def get_color(self):
