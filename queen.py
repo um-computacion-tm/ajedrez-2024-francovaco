@@ -15,5 +15,12 @@ class Queen(Piece):
     
     #Movimientos posibles de la reina
     def possible_moves(self, from_row, from_col):
-        directions = [(-1, -1), (-1, 1), (1, -1), (1, 1), (-1, 0), (1, 0), (0, -1), (0, 1)]
-        return self.possible_moves_general(from_row, from_col, directions)
+        '''
+        La función retorna los movimientos posibles de la reina.
+        Funcionamiento:
+        Se llama a la función possible_moves_general con los parámetros from_row, from_col, self.__queen__king__directions__.
+        Parámetros:
+        from_row: Recibe la fila de la posición actual de la reina.
+        from_col: Recibe la columna de la posición actual de la reina.
+        '''
+        return self.possible_moves_general(from_row, from_col, self.__queen__king__directions__)

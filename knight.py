@@ -15,5 +15,14 @@ class Knight(Piece):
     
     # Movimientos posibles del caballo
     def possible_moves(self, from_row, from_col):
+        '''
+        La función retorna los movimientos posibles del caballo.
+        Funcionamiento:
+        Se crea una lista con las direcciones en las que se puede mover el caballo.
+        Se llama a la función possible_moves_general con los parámetros from_row, from_col, directions.
+        Parámetros:
+        from_row: Recibe la fila de la posición actual del caballo.
+        from_col: Recibe la columna de la posición actual
+        '''
         directions = [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2)] 
         return super().possible_moves_general(from_row, from_col, directions)

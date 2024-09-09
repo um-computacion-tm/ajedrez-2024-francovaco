@@ -1,32 +1,46 @@
 # Changelog
 
+## [0.9.4] - 08-09-2024
+
+### Mejoras:
+-Mejoras de los test.
+-Mejoras en algunas piezas y el tablero.
+
+### Arreglos:
+-Corrección captura de fichas enemigas del peón.
+
+## [0.9.3] - 08-09-2024
+
+### Mejoras:
+-Mejoras de los test de king y rook.
+
 ## [0.9.2] - 08-09-2024
 
 ### Arreglos:
--Corrección de los movimientos del rey
+-Corrección de los movimientos del rey.
 
 ## [0.9.1] - 03-09-2024
 
 ### Arreglos:
--Corrección de duplicación de código 
+-Corrección de duplicación de código. 
 
 ## [0.9] - 29-08-2024
 
 ### Agregado:
--Creación test restricción salto de piezas
+-Creación test restricción salto de piezas.
 
 ### Arreglos: 
--Corrección de error al saltar piezas
+-Corrección de error al saltar piezas.
 
 ## [0.8] - 26-08-2024
 
 ### Agregado:
--Creación de finalización del juego al perder todas las fichas 
+-Creación de finalización del juego al perder todas las fichas.
 
 ## [0.7] - 25-08-2024
 
 ### Agregado:
--Creación test de chess
+-Creación test de chess.
 
 ## [0.6] - 24-08-2024
 

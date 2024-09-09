@@ -15,6 +15,7 @@ class TestPawn(unittest.TestCase):
     def test_possible_moves_white(self):
         '''
         La función test_possible_moves_white es una prueba unitaria que verifica los movimientos posibles de un peón blanco desde diferentes posiciones.
+        Llama al método possible_moves de la clase Pawn con una fila y columna de origen y verifica que los movimientos devueltos sean los esperados.
         '''
         pawn = Pawn('WHITE')
         # Movimientos desde la posición inicial (6, 3)
@@ -33,6 +34,7 @@ class TestPawn(unittest.TestCase):
     def test_possible_moves_black(self):
         '''
         La función test_possible_moves_black es una prueba unitaria que verifica los movimientos posibles de un peón negro desde diferentes posiciones.
+        Llama al método possible_moves de la clase Pawn con una fila y columna de origen y verifica que los movimientos devueltos sean los esperados.
         '''
         pawn = Pawn('BLACK')
         # Movimientos desde la posición inicial (1, 3)
