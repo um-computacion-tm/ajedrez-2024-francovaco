@@ -1,5 +1,7 @@
 class Piece:
 
+    knight_directions = [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2)]
+
     # Constructor de la clase
     def __init__(self, color):
         '''
@@ -11,7 +13,7 @@ class Piece:
         '''
         self.__color__ = color
         self.__queen__king__directions__ = [(-1, -1), (-1, 1), (1, -1), (1, 1), (-1, 0), (1, 0), (0, -1), (0, 1)]
-        self.__knight_directions__ = [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2)]
+        
 
     # Obtener color de la pieza
     def get_color(self):

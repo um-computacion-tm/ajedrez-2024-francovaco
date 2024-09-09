@@ -24,5 +24,4 @@ class Knight(Piece):
         from_row: Recibe la fila de la posición actual del caballo.
         from_col: Recibe la columna de la posición actual
         '''
-         
-        return super().possible_moves_general(from_row, from_col, self.__knight_directions__)
+        return super().possible_moves_general(from_row, from_col, Piece.knight_directions)
