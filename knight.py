@@ -24,6 +24,5 @@ class Knight(Piece):
         from_row: Recibe la fila de la posición actual del caballo.
         from_col: Recibe la columna de la posición actual
         '''
-        knight_dir = [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2)]
-        directions = knight_dir
+        directions = [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2)]
         return super().possible_moves_general(from_row, from_col, directions)
