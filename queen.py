@@ -11,7 +11,6 @@ class Queen(Piece):
         Si es blanco, retorna 'Q'.
         Si no, retorna 'q'.
         '''
-        self.__directions__ = Piece.queen_king_directions
         return 'Q' if self.__color__ == 'WHITE' else 'q'
     
     #Movimientos posibles de la reina
@@ -24,4 +23,4 @@ class Queen(Piece):
         from_row: Recibe la fila de la posición actual de la reina.
         from_col: Recibe la columna de la posición actual de la reina.
         '''
-        return self.possible_moves_general(from_row, from_col, self.__directions__)
+        return self.possible_moves_general(from_row, from_col, self.__queen_king_directions__)

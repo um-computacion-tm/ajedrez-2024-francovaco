@@ -26,4 +26,4 @@ class Knight(Piece):
         from_col: Recibe la columna de la posición actual
         '''
         directions = [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2)]
-        return super().possible_moves_general(from_row, from_col, self.__directions__)
+        return super().possible_moves_general(from_row, from_col, directions)

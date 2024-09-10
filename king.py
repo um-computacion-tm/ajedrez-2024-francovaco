@@ -11,7 +11,6 @@ class King(Piece):
         Si es blanco, retorna 'K'.
         Si no, retorna 'k'.
         '''
-        self.__directions__ = Piece.queen_king_directions
         return 'K' if self.__color__ == 'WHITE' else 'k'
     
     # Movimientos posibles del rey
@@ -24,4 +23,4 @@ class King(Piece):
         from_row: Recibe la fila de la posición actual del rey.
         from_col: Recibe la columna de la posición actual del rey.
         '''     
-        return super().possible_moves_general(from_row, from_col, self.__directions__, single_step=True)
+        return super().possible_moves_general(from_row, from_col, self.__queen_king_directions__, single_step=True)
