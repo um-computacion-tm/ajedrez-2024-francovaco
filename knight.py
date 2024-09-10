@@ -11,7 +11,8 @@ class Knight(Piece):
         Si es blanco, retorna 'N'.
         Si no, retorna 'n'.
         '''
-        return 'N' if self.__color__ == 'WHITE' else 'n'
+        self.__directions__ = Piece.knight_directions
+        return 'N' if self.__color__ == 'WHITE' else 'n'  
     
     # Movimientos posibles del caballo
     def possible_moves(self, from_row, from_col):
@@ -25,4 +26,4 @@ class Knight(Piece):
         from_col: Recibe la columna de la posición actual
         '''
         directions = [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2)]
-        return super().possible_moves_general(from_row, from_col, directions)
+        return super().possible_moves_general(from_row, from_col, self.__directions__)
