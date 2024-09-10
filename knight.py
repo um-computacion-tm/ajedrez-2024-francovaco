@@ -11,7 +11,7 @@ class Knight(Piece):
         Si es blanco, retorna 'N'.
         Si no, retorna 'n'.
         '''
-        return 'N' if self.__color__ == 'WHITE' else 'n'
+        return 'N' if self.__color__ == 'WHITE' else 'n'  
     
     # Movimientos posibles del caballo
     def possible_moves(self, from_row, from_col):
