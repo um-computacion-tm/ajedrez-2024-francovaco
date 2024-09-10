@@ -11,7 +11,6 @@ class Knight(Piece):
         Si es blanco, retorna 'N'.
         Si no, retorna 'n'.
         '''
-        self.__directions__ = Piece.knight_directions
         return 'N' if self.__color__ == 'WHITE' else 'n'  
     
     # Movimientos posibles del caballo
