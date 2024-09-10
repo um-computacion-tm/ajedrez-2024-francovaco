@@ -23,4 +23,5 @@ class Queen(Piece):
         from_row: Recibe la fila de la posición actual de la reina.
         from_col: Recibe la columna de la posición actual de la reina.
         '''
-        return self.possible_moves_general(from_row, from_col, self.__queen_king_directions__)
+        directions = self.get_directions('queen_king')
+        return self.possible_moves_general(from_row, from_col, directions)

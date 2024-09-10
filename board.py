@@ -154,6 +154,7 @@ class Board:
         # Verificar si el juego ha terminado
         self.check_game_over()
 
+    # Verificar si el camino está libre
     def is_path_clear(self, from_row, from_col, to_row, to_col):
         '''
         La función verifica si el camino entre la posición de origen y la posición de destino está libre.
@@ -175,19 +176,17 @@ class Board:
         # Verificar si la pieza es un caballo
         if piece is not None and piece.__str__() == 'n' or piece.__str__() == 'N':
             return True
-
         row_step = 1 if to_row > from_row else -1 if to_row < from_row else 0
         col_step = 1 if to_col > from_col else -1 if to_col < from_col else 0
-
         current_row, current_col = from_row + row_step, from_col + col_step
         while current_row != to_row or current_col != to_col:
             if self.__positions__[current_row][current_col] is not None:
                 return False
             current_row += row_step
             current_col += col_step
-
         return True
 
+    # Verificar si el juego ha terminado
     def check_game_over(self):
         '''
         La función verifica si el juego ha terminado.
