@@ -20,8 +20,12 @@ class Piece:
         '''
         return self.__color__
     
+    # Direcciones posibles de las piezas
     def get_directions(self, piece_type):
-        directions = {'knight': [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2)], 'queen_king': [(-1, -1), (-1, 1), (1, -1), (1, 1), (-1, 0), (1, 0), (0, -1), (0, 1)]}
+        directions = {'knight': [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2)], 
+                      'queen_king': [(-1, -1), (-1, 1), (1, -1), (1, 1), (-1, 0), (1, 0), (0, -1), (0, 1)],
+                      'bishop': [(-1, -1), (-1, 1), (1, -1), (1, 1)],
+                      'rook': [(-1, 0), (1, 0), (0, -1), (0, 1)]}
         return directions.get(piece_type, [])
 
     # Movimientos posibles de las piezas
