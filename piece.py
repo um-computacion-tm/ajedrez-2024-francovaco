@@ -10,6 +10,7 @@ class Piece:
         color: Recibe el parametro color para crear el atributo __color__ del objeto.
         ''' 
         self.__color__ = color
+        self.__queen_king_directions__ = [(-1, -1), (-1, 1), (1, -1), (1, 1), (-1, 0), (1, 0), (0, -1), (0, 1)]
         
     # Obtener color de la pieza
     def get_color(self):
@@ -19,12 +20,6 @@ class Piece:
         Retorna el valor del atributo __color__.
         '''
         return self.__color__
-    
-    # Direcciones posibles de las piezas
-    def get_directions(self, piece_type):
-        directions = {'knight': [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2)], 
-                      'queen_king': [(-1, -1), (-1, 1), (1, -1), (1, 1), (-1, 0), (1, 0), (0, -1), (0, 1)]}
-        return directions.get(piece_type, [])
 
     # Movimientos posibles de las piezas
     def possible_moves_general(self, from_row, from_col, directions, single_step=False):
