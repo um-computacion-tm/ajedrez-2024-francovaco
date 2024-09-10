@@ -24,5 +24,5 @@ class Bishop(Piece):
         from_row: Recibe la fila de la posición actual del alfil.
         from_col: Recibe la columna de la posición actual del alfil.
         '''
-        directions = [(-1, -1), (-1, 1), (1, -1), (1, 1)]
+        directions = self.get_directions('bishop')
         return self.possible_moves_general(from_row, from_col, directions)

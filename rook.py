@@ -24,5 +24,5 @@ class Rook(Piece):
         from_row: Recibe la fila de la posición actual de la torre.
         from_col: Recibe la columna de la posición actual de la torre.
         '''
-        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]    
+        directions = self.get_directions('rook')   
         return super().possible_moves_general(from_row, from_col, directions)
