@@ -13,6 +13,14 @@ class Rook(Piece):
         '''
         return 'R' if self.__color__ == 'WHITE' else 'r'
     
+    # Generar direcciones posibles de la torre
+    def generate_rook_directions(self):
+        directions = []
+        for i in [-1, 1]:
+            directions.append((i, 0)) 
+            directions.append((0, i))  
+        return directions
+
     # Movimientos posibles de la torre
     def possible_moves(self, from_row, from_col):
         '''
@@ -24,5 +32,5 @@ class Rook(Piece):
         from_row: Recibe la fila de la posición actual de la torre.
         from_col: Recibe la columna de la posición actual de la torre.
         '''
-        directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]    
+        directions = self.generate_rook_directions()   
         return super().possible_moves_general(from_row, from_col, directions)
