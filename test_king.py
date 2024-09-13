@@ -5,7 +5,7 @@ class TestKing(unittest.TestCase):
 
     def test_str_method(self):
         '''
-        La función test_str_method es una prueba unitaria que verifica que el método __str__ de la clase King devuelva 'K' para una pieza blanca y 'k' para una pieza negra.
+        The function test_str_method is a unit test that verifies that the __str__ method of the King class returns 'K' for a white piece and 'k' for a black piece.
         '''
         king_white = King('WHITE')
         king_black = King('BLACK')
@@ -14,8 +14,8 @@ class TestKing(unittest.TestCase):
 
     def test_possible_moves_white(self):
         '''
-        La función test_possible_moves es una prueba unitaria que verifica los movimientos posibles de un rey desde el centro del tablero.
-        Llama al método possible_moves de la clase King con una fila y columna de origen y verifica que los movimientos devueltos sean los esperados.
+        The function test_possible_moves is a unit test that verifies the possible moves of a king from the center of the board.
+        It calls the possible_moves method of the King class with a starting row and column and verifies that the returned moves are as expected.
         '''
         king = King('WHITE')
         from_row, from_col = 4, 4
@@ -25,8 +25,8 @@ class TestKing(unittest.TestCase):
 
     def test_possible_moves_black(self):
         '''
-        La función test_possible_moves_black es una prueba unitaria que verifica los movimientos posibles de un rey negro desde el centro del tablero.
-        Llama al método possible_moves de la clase King con una fila y columna de origen y verifica que los movimientos devueltos sean los esperados.
+        The function test_possible_moves_black is a unit test that verifies the possible moves of a black king from the center of the board.
+        It calls the possible_moves method of the King class with a starting row and column and verifies that the returned moves are as expected.
         '''
         king = King('BLACK')
         from_row, from_col = 4, 4

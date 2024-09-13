@@ -3,34 +3,34 @@ from piece import Piece
 
 class TestPiece(unittest.TestCase):
 
-    def test_piece_wite(self):
+    def test_piece_white(self):
         '''
-        La función test_piece_white es una prueba unitaria que verifica que el color de la pieza sea blanco.
-        La función recibe el color de la pieza y crea una instancia de la clase Piece.
+        The function test_piece_white is a unit test that verifies that the color of the piece is white.
+        The function receives the color of the piece and creates an instance of the Piece class.
         '''
         color = 'WHITE'
-        pieza = Piece(color)
-        self.assertEqual(pieza.__color__, color)
+        piece = Piece(color)
+        self.assertEqual(piece.__color__, color)
 
     def test_piece_black(self):
         '''
-        La función test_piece_black es una prueba unitaria que verifica que el color de la pieza sea negro.
-        La función recibe el color de la pieza y crea una instancia de la clase Piece.
+        The function test_piece_black is a unit test that verifies that the color of the piece is black.
+        The function receives the color of the piece and creates an instance of the Piece class.
         '''
         color = 'BLACK'
-        pieza = Piece(color)
-        self.assertEqual(pieza.__color__, color)
+        piece = Piece(color)
+        self.assertEqual(piece.__color__, color)
 
     def test_get_color_white(self):
         '''
-        La función test_get_color_white es una prueba unitaria que verifica que al crear una instancia de la clase pieza del color blanco la función get_color devuelva el color blanco. 
+        The function test_get_color_white is a unit test that verifies that when creating an instance of the Piece class with the color white, the get_color function returns the color white.
         '''
         piece = Piece("WHITE")
         self.assertEqual(piece.get_color(), "WHITE")
     
     def test_get_color_black(self):
         '''
-        La función test_get_color_black es una prueba unitaria que verifica que al crear una instancia de la clase pieza del color negro la función get_color devuelva el color negro.
+        The function test_get_color_black is a unit test that verifies that when creating an instance of the Piece class with the color black, the get_color function returns the color black.
         '''
         piece = Piece("BLACK")
         self.assertEqual(piece.get_color(), "BLACK")

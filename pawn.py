@@ -2,43 +2,43 @@ from piece import Piece
 
 class Pawn(Piece):
     
-    # Letra que representa al peón en el tablero
+    # Letter representing the pawn on the board
     def __str__(self):
         '''
-        La función retorna la letra que representa al peón en el tablero.
-        Funcionamiento:
-        Se verifica si el color del peón es blanco.
-        Si es blanco, retorna 'P'.
-        Si no, retorna 'p'.
+        The function returns the letter representing the pawn on the board.
+        Functionality:
+        It checks if the pawn's color is white.
+        If it is white, it returns 'P'.
+        Otherwise, it returns 'p'.
         '''
         return 'P' if self.__color__ == 'WHITE' else 'p'
     
-    # Movimientos posibles del peón
+    # Possible moves of the pawn
     def possible_moves(self, row, col):
         '''
-        La función retorna una lista con las posiciones a las que el peón puede moverse.
-        Funcionamiento:
-        Se crea una lista vacía llamada moves.
-        Se crea una variable direction que almacena -1 si el color del peón es blanco.
-        Se crea una variable start_row que almacena 6 si el color del peón es blanco.
-        Se agrega la posición hacia adelante a la lista moves.
-        Se agrega la posición hacia adelante a la lista moves si la posición es la inicial.
-        Se agrega la posición diagonal izquierda a la lista moves.
-        Se agrega la posición diagonal derecha a la lista moves.
-        Parámetros:
-        row: Recibe la fila de la posición actual del peón.
-        col: Recibe la columna de la posición actual del peón.
+        The function returns a list with the positions the pawn can move to.
+        Functionality:
+        It creates an empty list called moves.
+        It creates a variable direction that stores -1 if the pawn's color is white.
+        It creates a variable start_row that stores 6 if the pawn's color is white.
+        It adds the forward position to the moves list.
+        It adds the forward position to the moves list if the position is the initial one.
+        It adds the diagonal left position to the moves list.
+        It adds the diagonal right position to the moves list.
+        Parameters:
+        row: Receives the row of the pawn's current position.
+        col: Receives the column of the pawn's current position.
         '''
         moves = []
         direction = -1 if self.__color__ == 'WHITE' else 1
         start_row = 6 if self.__color__ == 'WHITE' else 1
 
-        # Movimiento hacia adelante
+        # Forward move
         moves.append((row + direction, col))
         if row == start_row:
             moves.append((row + 2 * direction, col))
 
-        # Movimientos diagonales solo si no es la posición inicial
+        # Diagonal moves only if not in the initial position
         if row != start_row:
             moves.append((row + direction, col - 1))
             moves.append((row + direction, col + 1))

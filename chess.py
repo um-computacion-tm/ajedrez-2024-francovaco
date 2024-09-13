@@ -1,85 +1,85 @@
-from board import Board, GameOverException
-
+from board import Board
+from exceptions import NonPieceOriginError, WrongTurnError, InvalidPieceMoveError, GameOverException
 
 class Chess:
-    # Inicializar juego
+    # Initialize game
     def __init__(self):
         '''
-        La función crea una instancia de la clase Chess.
-        Funcionamiento:
-        La función crea el atributo privado __board__ de la clase Board.
-        La función crea el atributo privado __turn__ que indica el turno del jugador.
+        The function creates an instance of the Chess class.
+        Functionality:
+        The function creates the private attribute __board__ of the Board class.
+        The function creates the private attribute __turn__ which indicates the player's turn.
         '''
-        # Crear tablero
+        # Create board
         self.__board__ = Board()
-        # Crear turno
+        # Create turn
         self.__turn__ = "WHITE"
 
-    # Obtener tablero
+    # Get board
     def get_board(self):
         '''
-        La función retorna el tablero del juego.
-        Funcionamiento:
-        Retorna el tablero del juego.
+        The function returns the game board.
+        Functionality:
+        Returns the game board.
         '''
         return self.__board__.get_board()
 
-    # Mover pieza    
+    # Move piece    
     def move(self, from_row, from_col, to_row, to_col):
         '''
-        La función mueve una pieza del tablero.
-        Funcionamiento:
-        Se obtiene el color de la pieza en la posición de origen.
-        Se verifica que haya una pieza en la posición de origen.
-        Se verifica que la pieza pertenezca al jugador actual.
-        Se verifica que el movimiento sea válido y se mueve la pieza.
-        Se cambia el turno.
-        Parámetros:
-        from_row: Recibe la fila de la posición de origen.
-        from_col: Recibe la columna de la posición de origen.
-        to_row: Recibe la fila de la posición de destino.
-        to_col: Recibe la columna de la posición de destino.
+        The function moves a piece on the board.
+        Functionality:
+        Gets the color of the piece at the origin position.
+        Checks if there is a piece at the origin position.
+        Checks if the piece belongs to the current player.
+        Checks if the move is valid and moves the piece.
+        Changes the turn.
+        Parameters:
+        from_row: Receives the row of the origin position.
+        from_col: Receives the column of the origin position.
+        to_row: Receives the row of the destination position.
+        to_col: Receives the column of the destination position.
         '''
         try:
-            # Obtener el color de la pieza en la posición de origen
+            # Get the color of the piece at the origin position
             piece_color = self.__board__.get_piece_color(from_row, from_col)
             if piece_color is None:
-                raise ValueError("No hay ninguna pieza en la posición de origen.")
+                raise NonPieceOriginError()
             
-            # Verificar que la pieza pertenece al jugador actual
+            # Check that the piece belongs to the current player
             if piece_color != self.__turn__:
-                raise ValueError("No es el turno de la pieza seleccionada.")
+                raise WrongTurnError()
             
-            # Verificar que el movimiento es válido y mover la pieza
+            # Check that the move is valid and move the piece
             if not self.__board__.is_valid_move(from_row, from_col, to_row, to_col):
-                raise ValueError("Movimiento no válido para la pieza seleccionada.")
+                raise InvalidPieceMoveError()
             
             self.__board__.move_piece(from_row, from_col, to_row, to_col)
             
-            # Cambiar el turno
+            # Change turn
             self.change_turn()    
 
         except GameOverException as e:
             raise e    
    
-    # Obtener turno
+    # Get turn
     @property
     def turn(self):
         '''
-        La función retorna el turno del jugador.
-        Funcionamiento:
-        Retorna el valor del atributo __turn__.
+        The function returns the player's turn.
+        Functionality:
+        Returns the value of the __turn__ attribute.
         '''
         return self.__turn__
 
-    # Cambiar turno
+    # Change turn
     def change_turn(self):
         '''
-        La función cambia el turno del jugador.
-        Funcionamiento:
-        Se verifica si el turno es blanco.
-        Si es blanco, se cambia a negro.
-        Si no se cambia a blanco.
+        The function changes the player's turn.
+        Functionality:
+        Checks if the turn is white.
+        If it is white, it changes to black.
+        If not, it changes to white.
         '''
         if self.__turn__ == "WHITE":
             self.__turn__ = "BLACK"
