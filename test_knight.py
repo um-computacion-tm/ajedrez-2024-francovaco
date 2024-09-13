@@ -5,7 +5,7 @@ class TestKnight(unittest.TestCase):
 
     def test_str_method(self):
         '''
-        La función test_str_method verifica que el método __str__ de la clase Knight devuelva 'N' para una pieza blanca y 'n' para una pieza negra.
+        The function test_str_method verifies that the __str__ method of the Knight class returns 'N' for a white piece and 'n' for a black piece.
         '''
         knight_white = Knight('WHITE')
         knight_black = Knight('BLACK')

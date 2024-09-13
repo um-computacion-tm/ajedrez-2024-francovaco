@@ -2,25 +2,25 @@ from piece import Piece
 
 class Queen(Piece):
 
-    # Letra que representa a la reina en el tablero
+    # Letter representing the queen on the board
     def __str__(self):
         '''
-        La función retorna la letra que representa a la reina en el tablero.
-        Funcionamiento:
-        Se verifica si el color de la reina es blanco.
-        Si es blanco, retorna 'Q'.
-        Si no, retorna 'q'.
+        The function returns the letter representing the queen on the board.
+        Functionality:
+        It checks if the queen's color is white.
+        If it is white, it returns 'Q'.
+        Otherwise, it returns 'q'.
         '''
         return 'Q' if self.__color__ == 'WHITE' else 'q'
     
-    #Movimientos posibles de la reina
+    # Possible moves of the queen
     def possible_moves(self, from_row, from_col):
         '''
-        La función retorna los movimientos posibles de la reina.
-        Funcionamiento:
-        Se llama a la función possible_moves_general con los parámetros from_row, from_col, self.__queen__king__directions__.
-        Parámetros:
-        from_row: Recibe la fila de la posición actual de la reina.
-        from_col: Recibe la columna de la posición actual de la reina.
+        The function returns the possible moves of the queen.
+        Functionality:
+        It calls the possible_moves_general function with the parameters from_row, from_col, self.__queen_king_directions__.
+        Parameters:
+        from_row: Receives the row of the queen's current position.
+        from_col: Receives the column of the queen's current position.
         '''
         return self.possible_moves_general(from_row, from_col, self.__queen_king_directions__)

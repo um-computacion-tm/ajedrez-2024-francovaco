@@ -5,7 +5,7 @@ class TestBishop(unittest.TestCase):
 
     def test_str_method(self):
         '''
-        La función test_str_method es una prueba unitaria que verifica que el método __str__ de la clase Bishop devuelva 'B' para una pieza blanca y 'b' para una pieza negra.
+        The function test_str_method is a unit test that verifies that the __str__ method of the Bishop class returns 'B' for a white piece and 'b' for a black piece.
         '''
         bishop_white = Bishop('WHITE')
         bishop_black = Bishop('BLACK')
@@ -14,29 +14,29 @@ class TestBishop(unittest.TestCase):
 
     def test_possible_moves_white(self):
         '''
-        La función test_possible_moves es una prueba unitaria que verifica los movimientos posibles de un alfil desde el centro del tablero.
-        Llama al método possible_moves de la clase Bishop con una fila y columna de origen y verifica que los movimientos devueltos sean los esperados.
+        The function test_possible_moves_white is a unit test that verifies the possible moves of a bishop from the center of the board.
+        It calls the possible_moves method of the Bishop class with a starting row and column and verifies that the returned moves are as expected.
         '''
         bishop = Bishop('WHITE')
         expected_moves = [
-            (2, 2), (1, 1), (0, 0),  # Diagonal superior izquierda
-            (2, 4), (1, 5), (0, 6),  # Diagonal superior derecha
-            (4, 2), (5, 1), (6, 0),  # Diagonal inferior izquierda
-            (4, 4), (5, 5), (6, 6), (7, 7)  # Diagonal inferior derecha
+            (2, 2), (1, 1), (0, 0),  # Upper left diagonal
+            (2, 4), (1, 5), (0, 6),  # Upper right diagonal
+            (4, 2), (5, 1), (6, 0),  # Lower left diagonal
+            (4, 4), (5, 5), (6, 6), (7, 7)  # Lower right diagonal
         ]
         self.assertEqual(bishop.possible_moves(3, 3), expected_moves)
 
     def test_possible_moves_black(self):
         '''
-        La función test_possible_moves_black es una prueba unitaria que verifica los movimientos posibles de un alfil negro desde el centro del tablero.
-        Llama al método possible_moves de la clase Bishop con una fila y columna de origen y verifica que los movimientos devueltos sean los esperados.
+        The function test_possible_moves_black is a unit test that verifies the possible moves of a black bishop from the center of the board.
+        It calls the possible_moves method of the Bishop class with a starting row and column and verifies that the returned moves are as expected.
         '''
         bishop = Bishop('BLACK')
         expected_moves = [
-            (2, 2), (1, 1), (0, 0),  # Diagonal superior izquierda
-            (2, 4), (1, 5), (0, 6),  # Diagonal superior derecha
-            (4, 2), (5, 1), (6, 0),  # Diagonal inferior izquierda
-            (4, 4), (5, 5), (6, 6), (7, 7)  # Diagonal inferior derecha
+            (2, 2), (1, 1), (0, 0),  # Upper left diagonal
+            (2, 4), (1, 5), (0, 6),  # Upper right diagonal
+            (4, 2), (5, 1), (6, 0),  # Lower left diagonal
+            (4, 4), (5, 5), (6, 6), (7, 7)  # Lower right diagonal
         ]
         self.assertEqual(bishop.possible_moves(3, 3), expected_moves)
 

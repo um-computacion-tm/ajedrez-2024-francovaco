@@ -1,11 +1,12 @@
 import unittest
-from chess import Chess, GameOverException
+from chess import Chess
+from exceptions import NonPieceOriginError, WrongTurnError, InvalidPieceMoveError
 
 class TestChess(unittest.TestCase):
     def test_init(self):
         '''
-        La función test_init es un método de prueba unitaria que verifica la correcta inicialización de un objeto de la clase Chess. 
-        La función asegura que al crear un nuevo juego de ajedrez, el turno inicial es de las piezas blancas y el tablero está correctamente inicializado.
+        The function test_init is a unit test method that verifies the correct initialization of a Chess object.
+        The function ensures that when a new chess game is created, the initial turn is for the white pieces and the board is correctly initialized.
         '''
         game = Chess()
         self.assertEqual(game.turn, "WHITE")
@@ -14,8 +15,8 @@ class TestChess(unittest.TestCase):
 
     def test_move_valid_pawn(self):
         '''
-        La función test_move_valid_pawn verifica que un peón blanco puede moverse correctamente en el tablero de ajedrez.
-        La función asegura que la nueva posición del peón no esté vacía, lo que indica que el peón se ha movido correctamente a esa posición.
+        The function test_move_valid_pawn verifies that a white pawn can move correctly on the chessboard.
+        The function ensures that the new position of the pawn is not empty, indicating that the pawn has moved correctly to that position.
         '''
         game = Chess()
         game.move(6, 0, 4, 0)
@@ -25,8 +26,8 @@ class TestChess(unittest.TestCase):
 
     def test_move_valid_knight(self):
         '''
-        La función test_move_valid_knight es un método de prueba unitaria que verifica que un caballo puede moverse correctamente en el tablero de ajedrez.
-        La función asegura que la nueva posición del caballo no esté vacía, lo que indica que el caballo se ha movido correctamente a esa posición.
+        The function test_move_valid_knight is a unit test method that verifies that a knight can move correctly on the chessboard.
+        The function ensures that the new position of the knight is not empty, indicating that the knight has moved correctly to that position.
         '''
         game = Chess()
         game.move(7, 1, 5, 2)
@@ -36,49 +37,49 @@ class TestChess(unittest.TestCase):
 
     def test_move_no_piece1(self):
         '''
-        La función test_move_no_piece1 es una prueba unitaria que verifica el comportamiento del método move de la clase Chess cuando no hay ninguna pieza en la posición de origen.
-        La función asegura que se lanza una excepción ValueError con el mensaje "No hay ninguna pieza en la posición de origen.".
+        The function test_move_no_piece1 is a unit test that verifies the behavior of the move method of the Chess class when there is no piece at the origin position.
+        The function ensures that a NonPieceOriginError exception is raised with the message "There is no piece at the origin position."
         '''
         game = Chess()
-        with self.assertRaises(ValueError) as context:
+        with self.assertRaises(NonPieceOriginError) as context:
             game.move(3, 3, 4, 3)
-        self.assertEqual(str(context.exception), "No hay ninguna pieza en la posición de origen.")
+        self.assertEqual(str(context.exception), "There is no piece at the origin position.")
 
     def test_move_no_piece2(self):
         '''
-        La función test_move_no_piece2 es una prueba unitaria que verifica el comportamiento del método move de la clase Chess cuando no hay ninguna pieza en la posición de origen.
-        La función asegura que se lanza una excepción ValueError con el mensaje "No hay ninguna pieza en la posición de origen.".
+        The function test_move_no_piece2 is a unit test that verifies the behavior of the move method of the Chess class when there is no piece at the origin position.
+        The function ensures that a NonPieceOriginError exception is raised with the message "There is no piece at the origin position."
         '''
         game = Chess()
-        with self.assertRaises(ValueError) as context:
+        with self.assertRaises(NonPieceOriginError) as context:
             game.move(3, 4, 4, 4)
-        self.assertEqual(str(context.exception), "No hay ninguna pieza en la posición de origen.")
+        self.assertEqual(str(context.exception), "There is no piece at the origin position.")
 
     def test_move_turn_invalid(self):
         '''
-        La función test_move_turn_invalid es una prueba unitaria que verifica el comportamiento del método move de la clase Chess cuando se intenta mover una pieza que no pertenece al jugador en turno.
-        La función asegura que se lanza una excepción ValueError con el mensaje "No es el turno de la pieza seleccionada.".
+        The function test_move_turn_invalid is a unit test that verifies the behavior of the move method of the Chess class when attempting to move a piece that does not belong to the player in turn.
+        The function ensures that a WrongTurnError exception is raised with the message "It is not the turn of the selected piece."
         '''
         game = Chess()
         game.move(6, 0, 4, 0)
-        with self.assertRaises(ValueError) as context:
+        with self.assertRaises(WrongTurnError) as context:
             game.move(6, 1, 5, 2)
-        self.assertEqual(str(context.exception), "No es el turno de la pieza seleccionada.")
+        self.assertEqual(str(context.exception), "It is not the turn of the selected piece.")
 
     def test_move_invalid(self):
         '''
-        La función test_move_invalid es una prueba unitaria que verifica el comportamiento del método move de la clase Chess cuando se intenta mover una pieza a una posición no válida.
-        La función asegura que se lanza una excepción ValueError con el mensaje "Movimiento no válido para la pieza seleccionada
+        The function test_move_invalid is a unit test that verifies the behavior of the move method of the Chess class when attempting to move a piece to an invalid position.
+        The function ensures that an InvalidPieceMoveError exception is raised with the message "Invalid move for the selected piece."
         '''
         game = Chess()
-        with self.assertRaises(ValueError) as context:
+        with self.assertRaises(InvalidPieceMoveError) as context:
             game.move(6, 0, 3, 0)
-        self.assertEqual(str(context.exception), "Movimiento no válido para la pieza seleccionada.")
+        self.assertEqual(str(context.exception), "Invalid move for the selected piece.")
 
     def test_change_turn(self):
         '''
-        La función test_change_turn es una prueba unitaria que verifica que el método change_turn de la clase Chess cambia el turno de las piezas correctamente.
-        La función asegura que el método change_turn de la clase Chess cambia el turno de las piezas correctamente después de cada movimiento válido.
+        The function test_change_turn is a unit test that verifies that the change_turn method of the Chess class correctly changes the turn of the pieces.
+        The function ensures that the change_turn method of the Chess class correctly changes the turn of the pieces after each valid move.
         '''
         game = Chess()
         game.move(6, 0, 4, 0)
@@ -87,4 +88,4 @@ class TestChess(unittest.TestCase):
         self.assertEqual(game.turn, "WHITE")
 
 if __name__ == '__main__':
-    unittest.main()    
+    unittest.main()

@@ -6,7 +6,7 @@ class TestRook(unittest.TestCase):
 
     def test_str_method(self):
         '''
-        La función test_str_method es una prueba unitaria que verifica que el método __str__ de la clase Rook devuelva 'R' para una pieza blanca y 'r' para una pieza negra.
+        The function test_str_method is a unit test that verifies that the __str__ method of the Rook class returns 'R' for a white piece and 'r' for a black piece.
         '''
         rook_white = Rook('WHITE')
         rook_black = Rook('BLACK')
@@ -15,8 +15,8 @@ class TestRook(unittest.TestCase):
 
     def test_possible_moves_white(self):
         '''
-        La función test_possible_moves es una prueba unitaria que verifica los movimientos posibles de una torre desde el centro del tablero.
-        Llama al método possible_moves de la clase Rook con una fila y columna de origen y verifica que los movimientos devueltos sean los esperados.
+        The function test_possible_moves is a unit test that verifies the possible moves of a rook from the center of the board.
+        It calls the possible_moves method of the Rook class with a starting row and column and verifies that the returned moves are as expected.
         '''
         rook = Rook('WHITE')
         from_row, from_col = 4, 4
@@ -26,8 +26,8 @@ class TestRook(unittest.TestCase):
 
     def test_possible_moves_black(self):
         '''
-        La función test_possible_moves es una prueba unitaria que verifica los movimientos posibles de una torre desde el centro del tablero.
-        Llama al método possible_moves de la clase Rook con una fila y columna de origen y verifica que los movimientos devueltos sean los esperados.
+        The function test_possible_moves is a unit test that verifies the possible moves of a rook from the center of the board.
+        It calls the possible_moves method of the Rook class with a starting row and column and verifies that the returned moves are as expected.
         '''
         rook = Rook('BLACK')
         from_row, from_col = 4, 4

@@ -5,7 +5,7 @@ class TestPawn(unittest.TestCase):
 
     def test_str_method(self):
         '''
-        La función test_str_method es una prueba unitaria que verifica que el método __str__ de la clase Pawn devuelva 'P' para una pieza blanca y 'p' para una pieza negra.
+        The function test_str_method is a unit test that verifies that the __str__ method of the Pawn class returns 'P' for a white piece and 'p' for a black piece.
         '''
         pawn_white = Pawn('WHITE')
         pawn_black = Pawn('BLACK')
@@ -14,38 +14,38 @@ class TestPawn(unittest.TestCase):
 
     def test_possible_moves_white(self):
         '''
-        La función test_possible_moves_white es una prueba unitaria que verifica los movimientos posibles de un peón blanco desde diferentes posiciones.
-        Llama al método possible_moves de la clase Pawn con una fila y columna de origen y verifica que los movimientos devueltos sean los esperados.
+        The function test_possible_moves_white is a unit test that verifies the possible moves of a white pawn from different positions.
+        It calls the possible_moves method of the Pawn class with a starting row and column and verifies that the returned moves are as expected.
         '''
         pawn = Pawn('WHITE')
-        # Movimientos desde la posición inicial (6, 3)
+        # Moves from the initial position (6, 3)
         expected_moves_initial = [(5, 3), (4, 3)]
         self.assertEqual(pawn.possible_moves(6, 3), expected_moves_initial)
         
-        # Movimientos desde una posición intermedia (5, 3)
-        expected_moves_intermediate = [(4, 3), (4, 2), (4, 4)]  # Incluyendo movimientos diagonales
+        # Moves from an intermediate position (5, 3)
+        expected_moves_intermediate = [(4, 3), (4, 2), (4, 4)]  # Including diagonal moves
         self.assertEqual(pawn.possible_moves(5, 3), expected_moves_intermediate)
         
-        # Movimientos diagonales desde (5, 3)
+        # Diagonal moves from (5, 3)
         possible_moves = pawn.possible_moves(5, 3)
         self.assertIn((4, 2), possible_moves)
         self.assertIn((4, 4), possible_moves)
 
     def test_possible_moves_black(self):
         '''
-        La función test_possible_moves_black es una prueba unitaria que verifica los movimientos posibles de un peón negro desde diferentes posiciones.
-        Llama al método possible_moves de la clase Pawn con una fila y columna de origen y verifica que los movimientos devueltos sean los esperados.
+        The function test_possible_moves_black is a unit test that verifies the possible moves of a black pawn from different positions.
+        It calls the possible_moves method of the Pawn class with a starting row and column and verifies that the returned moves are as expected.
         '''
         pawn = Pawn('BLACK')
-        # Movimientos desde la posición inicial (1, 3)
+        # Moves from the initial position (1, 3)
         expected_moves_initial = [(2, 3), (3, 3)]
         self.assertEqual(pawn.possible_moves(1, 3), expected_moves_initial)
         
-        # Movimientos desde una posición intermedia (2, 3)
-        expected_moves_intermediate = [(3, 3), (3, 2), (3, 4)]  # Incluyendo movimientos diagonales
+        # Moves from an intermediate position (2, 3)
+        expected_moves_intermediate = [(3, 3), (3, 2), (3, 4)]  # Including diagonal moves
         self.assertEqual(pawn.possible_moves(2, 3), expected_moves_intermediate)
         
-        # Movimientos diagonales desde (2, 3)
+        # Diagonal moves from (2, 3)
         possible_moves = pawn.possible_moves(2, 3)
         self.assertIn((3, 2), possible_moves)
         self.assertIn((3, 4), possible_moves)
