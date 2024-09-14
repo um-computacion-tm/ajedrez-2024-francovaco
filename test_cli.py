@@ -1,6 +1,7 @@
 import unittest
+import sys
 from io import StringIO
-from cli import play, show_board_with_icons, play
+from cli import play, show_board_with_icons
 from unittest.mock import patch, MagicMock
 
 class TestCli(unittest.TestCase):
@@ -88,10 +89,9 @@ class TestCli(unittest.TestCase):
         self.assertIn("Game over.", mock_stdout.getvalue())
 
     @patch('sys.stdout', new_callable=StringIO)
-    @patch('builtins.input', side_effect=['6', '0', '4', '0', 'EXIT'])
+    @patch('builtins.input', side_effect=['6', '0', '4', '0'])
     @patch('cli.show_board_with_icons')
-    @patch('builtins.exit', side_effect=SystemExit)
-    def test_valid_move_pawn(self, mock_exit, mock_show_board, mock_input, mock_stdout):
+    def test_valid_move_pawn(self, mock_show_board, mock_input, mock_stdout):
         '''
         The function test_valid_move_pawn is a unit test that verifies if a valid move on the chessboard is handled correctly.
         The function test_valid_move_pawn verifies that, when the user input is simulated to move a chess piece from position (row, column)
@@ -101,45 +101,33 @@ class TestCli(unittest.TestCase):
         chess = MagicMock()
         chess.get_board.return_value = [['.']*8 for _ in range(8)]
         chess.turn = 'white'
-        with self.assertRaises(SystemExit):
-            play(chess)
+        play(chess)
         chess.move.assert_called_with(6, 0, 4, 0)
 
     @patch('sys.stdout', new_callable=StringIO)
-    @patch('builtins.input', side_effect=['7', '1', '5', '0', 'EXIT'])
+    @patch('builtins.input', side_effect=['7', '1', '5', '0'])
     @patch('cli.show_board_with_icons')
-    @patch('builtins.exit', side_effect=SystemExit)
-    def test_valid_move_knight1(self, mock_exit, mock_show_board, mock_input, mock_stdout):
-        '''
-        The function test_valid_move_knight1 is a unit test that verifies if a valid knight move on the chessboard is handled correctly.
-        The function test_valid_move_knight1 verifies that, when the user input is simulated to move a knight piece from position (7, 1)
-        to position (5, 0), the move method of the chess object is called with the correct parameters. The parameters mock_show_board and mock_input
-        are mock objects that replace the real functions during the test.
-        '''
+    def test_valid_move_knight1(self, mock_show_board, mock_input, mock_stdout):
         chess = MagicMock()
         chess.get_board.return_value = [['.']*8 for _ in range(8)]
         chess.turn = 'white'
-        with self.assertRaises(SystemExit):
-            play(chess)
+        play(chess)
         chess.move.assert_called_with(7, 1, 5, 0)
 
     @patch('sys.stdout', new_callable=StringIO)
-    @patch('builtins.input', side_effect=['7', '1', '5', '2', 'EXIT'])
+    @patch('builtins.input', side_effect=['7', '1', '5', '2'])
     @patch('cli.show_board_with_icons')
-    @patch('builtins.exit', side_effect=SystemExit)
-    def test_valid_move_knight2(self, mock_exit, mock_show_board, mock_input, mock_stdout):
+    def test_valid_move_knight2(self, mock_show_board, mock_input, mock_stdout):
         chess = MagicMock()
         chess.get_board.return_value = [['.']*8 for _ in range(8)]
         chess.turn = 'white'
-        with self.assertRaises(SystemExit):
-            play(chess)
+        play(chess)
         chess.move.assert_called_with(7, 1, 5, 2)
 
     @patch('sys.stdout', new_callable=StringIO)
-    @patch('builtins.input', side_effect=['a', '0', '1', '1', 'EXIT'])
+    @patch('builtins.input', side_effect=['a', '0', '1', '1'])
     @patch('cli.show_board_with_icons')
-    @patch('builtins.exit', side_effect=SystemExit)
-    def test_non_numeric_coordinates_from_row(self, mock_exit, mock_show_board, mock_input, mock_stdout):
+    def test_non_numeric_coordinates_from_row(self, mock_show_board, mock_input, mock_stdout):
         '''
         The function test_non_numeric_coordinates_from_row is a unit test that verifies how an invalid non-numeric input is handled on the chessboard.
         The function test_non_numeric_coordinates_from_row verifies that, when the user input is simulated with a non-numeric value,
@@ -149,200 +137,141 @@ class TestCli(unittest.TestCase):
         chess = MagicMock()
         chess.get_board.return_value = [['.']*8 for _ in range(8)]
         chess.turn = 'white'
-        with self.assertRaises(SystemExit):
-            play(chess)
+        play(chess)
         self.assertIn("You must enter numeric values between 0 and 7.", mock_stdout.getvalue())
     
     @patch('sys.stdout', new_callable=StringIO)
-    @patch('builtins.input', side_effect=['0', 'a', '1', '1', 'EXIT'])
+    @patch('builtins.input', side_effect=['0', 'a', '1', '1'])
     @patch('cli.show_board_with_icons')
-    @patch('builtins.exit', side_effect=SystemExit)
-    def test_non_numeric_coordinates_from_col(self, mock_exit, mock_show_board, mock_input, mock_stdout):
+    def test_non_numeric_coordinates_from_col(self, mock_show_board, mock_input, mock_stdout):
+        chess = MagicMock()
+        chess.get_board.return_value = [['.']*8 for _ in range(8)]
+        chess.turn = 'white'
+        play(chess)
+        self.assertIn("You must enter numeric values between 0 and 7.", mock_stdout.getvalue())
+
+    @patch('sys.stdout', new_callable=StringIO)
+    @patch('builtins.input', side_effect=['0', '0', 'a', '1'])
+    @patch('cli.show_board_with_icons')
+    def test_non_numeric_coordinates_to_row(self, mock_show_board, mock_input, mock_stdout):
+        chess = MagicMock()
+        chess.get_board.return_value = [['.']*8 for _ in range(8)]
+        chess.turn = 'white'
+        play(chess)
+        self.assertIn("You must enter numeric values between 0 and 7.", mock_stdout.getvalue())
+
+    @patch('sys.stdout', new_callable=StringIO)
+    @patch('builtins.input', side_effect=['0', '0', '1', 'a'])
+    @patch('cli.show_board_with_icons')
+    def test_non_numeric_coordinates_to_col(self, mock_show_board, mock_input, mock_stdout):
+        chess = MagicMock()
+        chess.get_board.return_value = [['.']*8 for _ in range(8)]
+        chess.turn = 'white'
+        play(chess)
+        self.assertIn("You must enter numeric values between 0 and 7.", mock_stdout.getvalue())
+
+    @patch('builtins.input', side_effect=['&', '0', '1', '1'])
+    @patch('cli.show_board_with_icons')
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_symbol_coordinates_from_row(self, mock_stdout, mock_show_board, mock_input):
         '''
-        The function test_non_numeric_coordinates_from_col is a unit test that verifies how an invalid non-numeric input is handled on the chessboard.
-        The function test_non_numeric_coordinates_from_col verifies that, when the user input is simulated with a non-numeric value,
-        the program handles the incorrect input appropriately without attempting to move any piece and displays the error. The parameters mock_show_board and mock_input
-        are mock objects that replace the real functions during the test.
+        La función test_symbol_coordinates_from_row es una prueba unitaria que verifica cómo se maneja una entrada no numérica inválida en el tablero de ajedrez.
         '''
         chess = MagicMock()
         chess.get_board.return_value = [['.']*8 for _ in range(8)]
         chess.turn = 'white'
-        with self.assertRaises(SystemExit):
-            play(chess)
+        play(chess)
         self.assertIn("You must enter numeric values between 0 and 7.", mock_stdout.getvalue())
 
-    @patch('sys.stdout', new_callable=StringIO)
-    @patch('builtins.input', side_effect=['0', '0', 'a', '1', 'EXIT'])
-    @patch('cli.show_board_with_icons')
-    @patch('builtins.exit', side_effect=SystemExit)
-    def test_non_numeric_coordinates_to_row(self, mock_exit, mock_show_board, mock_input, mock_stdout):
-        '''
-        The function test_non_numeric_coordinates_to_row is a unit test that verifies how an invalid non-numeric input is handled on the chessboard.
-        The function test_non_numeric_coordinates_to_row verifies that, when the user input is simulated with a non-numeric value,
-        the program handles the incorrect input appropriately without attempting to move any piece and displays the error. The parameters mock_show_board and mock_input
-        are mock objects that replace the real functions during the test.
-        '''
-        chess = MagicMock()
-        chess.get_board.return_value = [['.']*8 for _ in range(8)]
-        chess.turn = 'white'
-        with self.assertRaises(SystemExit):
-            play(chess)
-        self.assertIn("You must enter numeric values between 0 and 7.", mock_stdout.getvalue())
-
-    @patch('sys.stdout', new_callable=StringIO)
-    @patch('builtins.input', side_effect=['0', '0', '1', 'a', 'EXIT'])
-    @patch('cli.show_board_with_icons')
-    @patch('builtins.exit', side_effect=SystemExit)
-    def test_non_numeric_coordinates_to_col(self, mock_exit, mock_show_board, mock_input, mock_stdout):
-        '''
-        The function test_non_numeric_coordinates_to_col is a unit test that verifies how an invalid non-numeric input is handled on the chessboard.
-        The function test_non_numeric_coordinates_to_col verifies that, when the user input is simulated with a non-numeric value,
-        the program handles the incorrect input appropriately without attempting to move any piece and displays the error. The parameters mock_show_board and mock_input
-        are mock objects that replace the real functions during the test.
-        '''
-        chess = MagicMock()
-        chess.get_board.return_value = [['.']*8 for _ in range(8)]
-        chess.turn = 'white'
-        with self.assertRaises(SystemExit):
-            play(chess)
-        self.assertIn("You must enter numeric values between 0 and 7.", mock_stdout.getvalue())
-
-    @patch('builtins.input', side_effect=['&', '0', '1', '1', 'EXIT'])
+    @patch('builtins.input', side_effect=['0', '&', '1', '1'])
     @patch('cli.show_board_with_icons')
     @patch('sys.stdout', new_callable=StringIO)
-    @patch('builtins.exit', side_effect=SystemExit)
-    def test_symbol_coordinates_from_row(self, mock_exit, mock_stdout, mock_show_board, mock_input):
+    def test_symbol_coordinates_from_col(self, mock_stdout, mock_show_board, mock_input):
         '''
         The function test_symbol_coordinates_from_row is a unit test that verifies how an invalid non-numeric input is handled on the chessboard.
         '''
         chess = MagicMock()
         chess.get_board.return_value = [['.']*8 for _ in range(8)]
         chess.turn = 'white'
-        with self.assertRaises(SystemExit):
-            play(chess)
+        play(chess)
         self.assertIn("You must enter numeric values between 0 and 7.", mock_stdout.getvalue())
 
-    @patch('builtins.input', side_effect=['0', '&', '1', '1', 'EXIT'])
+    @patch('builtins.input', side_effect=['0', '0', '&', '1'])
     @patch('cli.show_board_with_icons')
     @patch('sys.stdout', new_callable=StringIO)
-    @patch('builtins.exit', side_effect=SystemExit)
-    def test_symbol_coordinates_from_col(self, mock_exit, mock_stdout, mock_show_board, mock_input):
-        '''
-        The function test_symbol_coordinates_from_col is a unit test that verifies how an invalid non-numeric input is handled on the chessboard.
-        '''
-        chess = MagicMock()
-        chess.get_board.return_value = [['.']*8 for _ in range(8)]
-        chess.turn = 'white'
-        with self.assertRaises(SystemExit):
-            play(chess)
-        self.assertIn("You must enter numeric values between 0 and 7.", mock_stdout.getvalue())
-
-    @patch('builtins.input', side_effect=['0', '0', '&', '1', 'EXIT'])
-    @patch('cli.show_board_with_icons')
-    @patch('sys.stdout', new_callable=StringIO)
-    @patch('builtins.exit', side_effect=SystemExit)
-    def test_symbol_coordinates_to_row(self, mock_exit, mock_stdout, mock_show_board, mock_input):
+    def test_symbol_coordinates_to_row(self, mock_stdout, mock_show_board, mock_input):
         '''
         The function test_symbol_coordinates_to_row is a unit test that verifies how an invalid non-numeric input is handled on the chessboard.
-        The function test_symbol_coordinates_to_row verifies that, when the user input is simulated with a non-numeric value,
-        the program handles the incorrect input appropriately without attempting to move any piece and displays the error. The parameters mock_show_board and mock_input
-        are mock objects that replace the real functions during the test.
         '''
         chess = MagicMock()
         chess.get_board.return_value = [['.']*8 for _ in range(8)]
         chess.turn = 'white'
-        with self.assertRaises(SystemExit):
-            play(chess)
+        play(chess)
         self.assertIn("You must enter numeric values between 0 and 7.", mock_stdout.getvalue())
 
-    @patch('builtins.input', side_effect=['0', '0', '1', '&', 'EXIT'])
+    @patch('builtins.input', side_effect=['0', '0', '1', '&'])
     @patch('cli.show_board_with_icons')
     @patch('sys.stdout', new_callable=StringIO)
-    @patch('builtins.exit', side_effect=SystemExit)
-    def test_symbol_coordinates_to_col(self, mock_exit, mock_stdout, mock_show_board, mock_input):
+    def test_symbol_coordinates_to_col(self, mock_stdout, mock_show_board, mock_input):
         '''
-        The function test_symbol_coordinates_to_col is a unit test that verifies how an invalid non-numeric input is handled on the chessboard.
-        The function test_symbol_coordinates_to_col verifies that, when the user input is simulated with a non-numeric value,
-        the program handles the incorrect input appropriately without attempting to move any piece and displays the error. The parameters mock_show_board and mock_input
-        are mock objects that replace the real functions during the test.
+        The function test_symbol_coordinates_to_row is a unit test that verifies how an invalid non-numeric input is handled on the chessboard.
         '''
         chess = MagicMock()
         chess.get_board.return_value = [['.']*8 for _ in range(8)]
         chess.turn = 'white'
-        with self.assertRaises(SystemExit):
-            play(chess)
+        play(chess)
         self.assertIn("You must enter numeric values between 0 and 7.", mock_stdout.getvalue())
 
-    @patch('builtins.input', side_effect=['0', '0', '8', '1', 'EXIT'])
+    @patch('builtins.input', side_effect=['0', '0', '8', '1'])
     @patch('cli.show_board_with_icons')
     @patch('sys.stdout', new_callable=StringIO)
-    @patch('builtins.exit', side_effect=SystemExit)
-    def test_out_of_range_coordinates_to_row(self, mock_exit, mock_stdout, mock_show_board, mock_input):
+    def test_out_of_range_coordinates_to_row(self, mock_stdout, mock_show_board, mock_input):
         '''
         The function test_out_of_range_coordinates_to_row is a unit test that verifies how an out-of-range input is handled on the chessboard.
-        The function test_out_of_range_coordinates_to_row verifies that, when the user input is simulated with an out-of-range value,
-        the program handles the incorrect input appropriately without attempting to move any piece and displays the error. The parameters mock_show_board and mock_input
-        are mock objects that replace the real functions during the test.
         '''
         chess = MagicMock()
         chess.get_board.return_value = [['.']*8 for _ in range(8)]
         chess.turn = 'white'
-        with self.assertRaises(SystemExit):
-            play(chess)
+        play(chess)
         self.assertIn("Row and column values must be between 0 and 7.", mock_stdout.getvalue())
 
-    @patch('builtins.input', side_effect=['9', '0', '1', '1', 'EXIT'])
+    @patch('builtins.input', side_effect=['9', '0', '1', '1'])
     @patch('cli.show_board_with_icons')
     @patch('sys.stdout', new_callable=StringIO)
-    @patch('builtins.exit', side_effect=SystemExit)
-    def test_out_of_range_coordinates_from_row(self, mock_exit, mock_stdout, mock_show_board, mock_input):
+    def test_out_of_range_coordinates_from_row(self, mock_stdout, mock_show_board, mock_input):
         '''
         The function test_out_of_range_coordinates_from_row is a unit test that verifies how an out-of-range input is handled on the chessboard.
-        The function test_out_of_range_coordinates_from_row verifies that, when the user input is simulated with an out-of-range value,
-        the program handles the incorrect input appropriately without attempting to move any piece and displays the error. The parameters mock_show_board and mock_input
-        are mock objects that replace the real functions during the test.
         '''
         chess = MagicMock()
         chess.get_board.return_value = [['.']*8 for _ in range(8)]
         chess.turn = 'white'
-        with self.assertRaises(SystemExit):
-            play(chess)
+        play(chess)
         self.assertIn("Row and column values must be between 0 and 7.", mock_stdout.getvalue())
 
-    @patch('builtins.input', side_effect=['0', '9', '1', '1', 'EXIT'])
+    @patch('builtins.input', side_effect=['0', '9', '1', '1'])
     @patch('cli.show_board_with_icons')
     @patch('sys.stdout', new_callable=StringIO)
-    @patch('builtins.exit', side_effect=SystemExit)
-    def test_out_of_range_coordinates_from_col(self, mock_exit, mock_stdout, mock_show_board, mock_input):
+    def test_out_of_range_coordinates_from_col(self, mock_stdout, mock_show_board, mock_input):
         '''
         The function test_out_of_range_coordinates_from_col is a unit test that verifies how an out-of-range input is handled on the chessboard.
-        The function test_out_of_range_coordinates_from_col verifies that, when the user input is simulated with an out-of-range value,
-        the program handles the incorrect input appropriately without attempting to move any piece and displays the error. The parameters mock_show_board and mock_input
-        are mock objects that replace the real functions during the test.
         '''
         chess = MagicMock()
         chess.get_board.return_value = [['.']*8 for _ in range(8)]
         chess.turn = 'white'
-        with self.assertRaises(SystemExit):
-            play(chess)
+        play(chess)
         self.assertIn("Row and column values must be between 0 and 7.", mock_stdout.getvalue())
 
-    @patch('builtins.input', side_effect=['0', '0', '1', '12', 'EXIT'])
+    @patch('builtins.input', side_effect=['0', '0', '1', '12'])
     @patch('cli.show_board_with_icons')
     @patch('sys.stdout', new_callable=StringIO)
-    @patch('builtins.exit', side_effect=SystemExit)
-    def test_out_of_range_coordinates_to_col(self, mock_exit, mock_stdout, mock_show_board, mock_input):
+    def test_out_of_range_coordinates_to_col(self, mock_stdout, mock_show_board, mock_input):
         '''
         The function test_out_of_range_coordinates_to_col is a unit test that verifies how an out-of-range input is handled on the chessboard.
-        The function test_out_of_range_coordinates_to_col verifies that, when the user input is simulated with an out-of-range value,
-        the program handles the incorrect input appropriately without attempting to move any piece and displays the error. The parameters mock_show_board and mock_input
-        are mock objects that replace the real functions during the test.
         '''
         chess = MagicMock()
         chess.get_board.return_value = [['.']*8 for _ in range(8)]
         chess.turn = 'white'
-        with self.assertRaises(SystemExit):
-            play(chess)
+        play(chess)
         self.assertIn("Row and column values must be between 0 and 7.", mock_stdout.getvalue())
 
 
