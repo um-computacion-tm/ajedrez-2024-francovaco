@@ -3,25 +3,13 @@ from exceptions import InvalidMove, OutOfBoundsError, NonNumericInputError, Game
 
 # Main function
 def main():
-    while True:
-        print("\n" + "="*30)
-        print(" " * 10 + "CHESS")
-        print("="*30)
-        print("1- Play")
-        print("2- Exit")
-        option = input("Select an option: ")
-        if option == '1':
-            chess = Chess()
-            try:
-                play(chess)
-            except GameOverException as e:
-                print(str(e))
-                break
-        elif option == '2':
-            print("Goodbye!")
-            break
-        else:
-            print("Invalid option. Please try again.")
+    chess = Chess()
+    while True: 
+        try:
+            play(chess)
+        except GameOverException as e:
+            print(str(e))
+            exit()
 
 # Show board with icons
 def show_board_with_icons(board):
