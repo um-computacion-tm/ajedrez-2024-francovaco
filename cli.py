@@ -8,33 +8,6 @@ def main():
         print(" " * 10 + "CHESS")
         print("="*30)
         print("1- Play")
-        print("2- Instructions")
-        print("3- Exit")
-        option = input("Select an option: ")
-        if option == '1':
-            chess = Chess()
-            try:
-                play(chess)
-            except GameOverException as e:
-                print(str(e))
-                break
-        elif option == '2':
-            instructions_menu()
-        elif option == '3':
-            print("Goodbye!")
-            break
-        else:
-            print("Invalid option. Please try again.")
-
-# Instructions menu
-def instructions_menu():
-    while True:
-        print("\n" + "="*30)
-        print(" " * 10 + "INSTRUCTIONS")
-        print("="*30)
-        print("Chess is a two-player strategy board game played on an 8x8 grid with pieces that move according to standard chess rules. \nHowever, the game does not include check, checkmate, stalemate, castling, promotion, or time controls. \nThe game ends when one of the players enters 'EXIT' or when a player runs out of pieces. \nCoordinates range from 0 to 7 for rows (top to bottom) and 0 to 7 for columns (left to right).")
-        print("="*30)
-        print("1- Play")
         print("2- Exit")
         option = input("Select an option: ")
         if option == '1':
@@ -46,7 +19,7 @@ def instructions_menu():
                 break
         elif option == '2':
             print("Goodbye!")
-            exit()
+            break
         else:
             print("Invalid option. Please try again.")
 

@@ -1,29 +1,9 @@
 import unittest
 from io import StringIO
-from cli import play, show_board_with_icons, play, instructions_menu
+from cli import play, show_board_with_icons, play
 from unittest.mock import patch, MagicMock
 
 class TestCli(unittest.TestCase):
-
-    @patch('builtins.input', side_effect=['2'])
-    @patch('builtins.print')
-    def test_exit_option(self, mock_print, mock_input):
-        '''
-        The function test_exit_option is a unit test that verifies how the exit option is handled in the main menu.
-        '''
-        with self.assertRaises(SystemExit):
-            instructions_menu()
-        mock_print.assert_any_call("Goodbye!")
-
-    @patch('builtins.input', side_effect=['invalid', '2'])
-    @patch('builtins.print')
-    def test_invalid_option(self, mock_print, mock_input):
-        '''
-        The function test_invalid_option is a unit test that verifies how an invalid option is handled in the main menu.
-        '''
-        with self.assertRaises(SystemExit):
-            instructions_menu()
-        mock_print.assert_any_call("Invalid option. Please try again.")
 
     @patch('sys.stdout', new_callable=StringIO)
     def test_show_board_with_icons(self, mock_stdout):
