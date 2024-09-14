@@ -55,7 +55,7 @@ def play(chess):
         show_board_with_icons(chess.get_board())
         print("Enter the coordinates of the piece you want to move and its destination.")
         print("Enter EXIT to end the game.")
-        print("Turn: ", chess.turn)
+        print("Turn:", chess.turn)
         from_row = input("From row: ")
         if from_row.upper() == "EXIT":
             print("Game over.")

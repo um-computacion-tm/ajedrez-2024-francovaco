@@ -8,10 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.9.5] - 12-09-2024
 
 ### Added
--Exceptions file
+- Exceptions file
 
 ### Changed
--Board, Chess and Cli exceptions
+- Board, Chess and Cli exceptions
 
 ## [0.9.4] - 08-09-2024
 
