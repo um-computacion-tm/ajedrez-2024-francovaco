@@ -1,6 +1,6 @@
 import unittest
 from board import Board
-from exceptions import NonPieceOriginError, NonCaptureOwnPieceError, NonPassOverPieceError, GameOverException
+from exceptions import NonCaptureOwnPieceError, NonPassOverPieceError, GameOverException
 
 class TestBoard(unittest.TestCase):
     def test_is_valid_move_no_piece(self):

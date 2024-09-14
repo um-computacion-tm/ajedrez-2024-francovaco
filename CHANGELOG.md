@@ -5,13 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.9.6] - 14-09-2024
+
+### Added
+- Main menu
+- Instructions
+
 ## [0.9.5] - 12-09-2024
 
 ### Added
--Exceptions file
+- Exceptions file
 
 ### Changed
--Board, Chess and Cli exceptions
+- Board, Chess and Cli exceptions
 
 ## [0.9.4] - 08-09-2024
 

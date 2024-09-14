@@ -3,13 +3,52 @@ from exceptions import InvalidMove, OutOfBoundsError, NonNumericInputError, Game
 
 # Main function
 def main():
-    chess = Chess()
-    while True: 
-        try:
-            play(chess)
-        except GameOverException as e:
-            print(str(e))
+    while True:
+        print("\n" + "="*30)
+        print(" " * 10 + "CHESS")
+        print("="*30)
+        print("1- Play")
+        print("2- Instructions")
+        print("3- Exit")
+        option = input("Select an option: ")
+        if option == '1':
+            chess = Chess()
+            try:
+                play(chess)
+            except GameOverException as e:
+                print(str(e))
+                break
+        elif option == '2':
+            instructions_menu()
+        elif option == '3':
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid option. Please try again.")
+
+# Instructions menu
+def instructions_menu():
+    while True:
+        print("\n" + "="*30)
+        print(" " * 10 + "INSTRUCTIONS")
+        print("="*30)
+        print("Chess is a two-player strategy board game played on an 8x8 grid with pieces that move according to standard chess rules. \nHowever, the game does not include check, checkmate, stalemate, castling, promotion, or time controls. \nThe game ends when one of the players enters 'EXIT' or when a player runs out of pieces. \nCoordinates range from 0 to 7 for rows (top to bottom) and 0 to 7 for columns (left to right).")
+        print("="*30)
+        print("1- Play")
+        print("2- Exit")
+        option = input("Select an option: ")
+        if option == '1':
+            chess = Chess()
+            try:
+                play(chess)
+            except GameOverException as e:
+                print(str(e))
+                break
+        elif option == '2':
+            print("Goodbye!")
             exit()
+        else:
+            print("Invalid option. Please try again.")
 
 # Show board with icons
 def show_board_with_icons(board):
@@ -50,44 +89,45 @@ def play(chess):
     Parameters:
     chess: The function receives a single parameter called chess, which is an object representing the current state of the chess game. 
     '''
-    try: 
-        # Display board and current turn and request coordinates
-        show_board_with_icons(chess.get_board())
-        print("Enter the coordinates of the piece you want to move and its destination.")
-        print("Enter EXIT to end the game.")
-        print("Turn: ", chess.turn)
-        from_row = input("From row: ")
-        if from_row.upper() == "EXIT":
-            print("Game over.")
-            exit()
-        from_col = input("From column: ")
-        if from_col.upper() == "EXIT":
-            print("Game over.")
-            exit()
-        to_row = input("To row: ")
-        if to_row.upper() == "EXIT":
-            print("Game over.")
-            exit()
-        to_col = input("To column: ")
-        if to_col.upper() == "EXIT":
-            print("Game over.")
-            exit()
-        # Validate that the coordinates are numbers
-        if not (from_row.isdigit() and from_col.isdigit() and to_row.isdigit() and to_col.isdigit()):
-            raise NonNumericInputError()      
-        # Convert coordinates to integers
-        from_row = int(from_row)
-        from_col = int(from_col)
-        to_row = int(to_row)
-        to_col = int(to_col)
-        # Validate that the coordinates are within the allowed range
-        if not (0 <= from_row < 8 and 0 <= from_col < 8 and 0 <= to_row < 8 and 0 <= to_col < 8):
-            raise OutOfBoundsError()       
-        # Move the piece on the board
-        chess.move(from_row, from_col, to_row, to_col)
-    # Exceptions 
-    except InvalidMove as e:
-        print("Error:", e)
+    while True:
+        try: 
+            # Display board and current turn and request coordinates
+            show_board_with_icons(chess.get_board())
+            print("Enter the coordinates of the piece you want to move and its destination.")
+            print("Enter EXIT to end the game.")
+            print("Turn:", chess.turn)
+            from_row = input("From row: ")
+            if from_row.upper() == "EXIT":
+                print("Game over.")
+                exit()
+            from_col = input("From column: ")
+            if from_col.upper() == "EXIT":
+                print("Game over.")
+                exit()
+            to_row = input("To row: ")
+            if to_row.upper() == "EXIT":
+                print("Game over.")
+                exit()
+            to_col = input("To column: ")
+            if to_col.upper() == "EXIT":
+                print("Game over.")
+                exit()
+            # Validate that the coordinates are numbers
+            if not (from_row.isdigit() and from_col.isdigit() and to_row.isdigit() and to_col.isdigit()):
+                raise NonNumericInputError()      
+            # Convert coordinates to integers
+            from_row = int(from_row)
+            from_col = int(from_col)
+            to_row = int(to_row)
+            to_col = int(to_col)
+            # Validate that the coordinates are within the allowed range
+            if not (0 <= from_row < 8 and 0 <= from_col < 8 and 0 <= to_row < 8 and 0 <= to_col < 8):
+                raise OutOfBoundsError()       
+            # Move the piece on the board
+            chess.move(from_row, from_col, to_row, to_col)
+        # Exceptions 
+        except InvalidMove as e:
+            print("Error:", e)
 
 if __name__ == "__main__":
     main()
