@@ -1,5 +1,4 @@
 import unittest
-import sys
 from io import StringIO
 from cli import play, show_board_with_icons
 from unittest.mock import patch, MagicMock
