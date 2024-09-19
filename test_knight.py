@@ -13,9 +13,14 @@ class TestKnight(unittest.TestCase):
         self.assertEqual(str(knight_black), 'n')
 
     def test_generate_knight_directions(self):
+        '''
+        The function test_generate_knight_directions verifies that the generate_knight_directions method of the Knight class returns the correct list of directions for a knight piece.
+        '''
         knight = Knight('WHITE')
         expected_directions = [(2, 1), (2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2), (-2, 1), (-2, -1)]
         self.assertEqual(knight.generate_knight_directions(), expected_directions)
+
+
 
 if __name__ == '__main__':
     unittest.main()
