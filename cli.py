@@ -3,6 +3,9 @@ from exceptions import InvalidMove, OutOfBoundsError, NonNumericInputError, Game
 
 # Main function
 def main():
+    '''
+    The function main() is the entry point of the program.
+    '''
     chess = Chess()
     while True: 
         try:
