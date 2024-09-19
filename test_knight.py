@@ -12,5 +12,10 @@ class TestKnight(unittest.TestCase):
         self.assertEqual(str(knight_white), 'N')
         self.assertEqual(str(knight_black), 'n')
 
+    def test_generate_knight_directions(self):
+        knight = Knight('WHITE')
+        expected_directions = [(2, 1), (2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2), (-2, 1), (-2, -1)]
+        self.assertEqual(knight.generate_knight_directions(), expected_directions)
+
 if __name__ == '__main__':
     unittest.main()
