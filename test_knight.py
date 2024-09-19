@@ -20,7 +20,5 @@ class TestKnight(unittest.TestCase):
         expected_directions = [(2, 1), (2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2), (-2, 1), (-2, -1)]
         self.assertEqual(knight.generate_knight_directions(), expected_directions)
 
-
-
 if __name__ == '__main__':
     unittest.main()
